@@ -6,7 +6,7 @@ namespace Jenny
 {
     public class CommonFunc
     {
-        public static void QuitGame()
+        public static void QuitApp()
         {
 #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;

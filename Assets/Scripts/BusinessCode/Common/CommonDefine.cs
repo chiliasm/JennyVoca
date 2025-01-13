@@ -1,13 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 namespace Jenny
 {
     public enum E_MainUI
     {
         None = -1,
+
         MainUI_Intro_Base,
+        MainUI_Lobby_Base,
 
         Last,
     }

@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -57,7 +56,7 @@ namespace Jenny
         #endregion
 
         #region // [Func] OrderUI //
-        E_MainUI GetLastOrderUI()
+        public E_MainUI GetLastOrderUI()
         {
             var type = E_MainUI.None;
             if (mOrderList.Count > 0)

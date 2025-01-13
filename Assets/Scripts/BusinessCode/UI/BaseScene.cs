@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Jenny
@@ -37,12 +35,15 @@ namespace Jenny
         #region // [Func] MainUI //
         void InitMainUI()
         {
+            UIManager.Instance.InitUIController(_uiController);
+
             switch (mSceneType)
             {
                 case E_SCENE_TYPE.Intro:
-                    _uiController.OpenMainUI(E_MainUI.MainUI_Intro_Base);
+                    UIManager.Instance.OpenUI(E_MainUI.MainUI_Intro_Base);
                     break;
                 case E_SCENE_TYPE.Lobby:
+                    UIManager.Instance.OpenUI(E_MainUI.MainUI_Lobby_Base);
                     break;
                 case E_SCENE_TYPE.Voca:
                     break;

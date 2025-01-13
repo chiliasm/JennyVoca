@@ -14,6 +14,8 @@ namespace Jenny
         readonly Dictionary<E_MainUI, MainUI> mMainUIDic = new();
         readonly Dictionary<E_SubUI, SubUI> mSubUIDic = new();
         readonly Dictionary<E_MsgUI, MsgUI> mMsgUIDic = new();
+
+        UIController mUIController;
         #endregion
 
 
@@ -33,6 +35,11 @@ namespace Jenny
         public override void OnCreateSingleton()
         {
             base.OnCreateSingleton();
+        }
+
+        public void InitUIController(UIController controller)
+        {
+            mUIController = controller;
         }
 
         public override void Clear()
@@ -112,7 +119,44 @@ namespace Jenny
         }
         #endregion
 
-        #region // [Func] Util //
+        #region // [Func] OpenUI //
+        public void OpenUI(E_MainUI type)
+        {
+            if (mUIController != null)
+                mUIController.OpenUI(type);
+        }
+
+        public void OpenUI(E_SubUI type)
+        {
+            if (mUIController != null)
+                mUIController.OpenUI(type);
+        }
+
+        public void OpenUI(E_MsgUI type)
+        {
+            if (mUIController != null)
+                mUIController.OpenUI(type);
+        }
+        #endregion
+
+        #region // [Func] CloseUI //
+        public void CloseUI(E_MainUI type)
+        {
+            if (mUIController != null)
+                mUIController.CloseUI(type);
+        }
+
+        public void CloseUI(E_SubUI type)
+        {
+            if (mUIController != null)
+                mUIController.CloseUI(type);
+        }
+
+        public void CloseUI(E_MsgUI type)
+        {
+            if (mUIController != null)
+                mUIController.CloseUI(type);
+        }
         #endregion
     }
 }

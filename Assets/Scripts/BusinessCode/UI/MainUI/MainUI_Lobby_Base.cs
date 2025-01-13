@@ -1,16 +1,19 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Jenny
 {
-    public class MainUI_Intro_Base : MainUI
+    public class MainUI_Lobby_Base : MainUI
     {
         #region // [Var] Unity //
-        [Header("== MainUI ==")]
+        [SerializeField]
+        Button _btnRegist;
+        [SerializeField]
+        Button _btnExam;
         [SerializeField]
         Button _btnQuit;
-        [SerializeField]
-        Button _btnStart;
         #endregion
 
 
@@ -19,27 +22,35 @@ namespace Jenny
         {
             base.OnEnable();
 
+            _btnRegist.onClick.AddListener(OnClickRegistButton);
+            _btnExam.onClick.AddListener(OnClickExamButton);
             _btnQuit.onClick.AddListener(OnClickQuitButton);
-            _btnStart.onClick.AddListener(OnClickStartButton);
         }
+
         protected override void OnDisable()
         {
             base.OnDisable();
 
+            _btnRegist.onClick.RemoveListener(OnClickRegistButton);
+            _btnExam.onClick.RemoveListener(OnClickExamButton);
             _btnQuit.onClick.RemoveListener(OnClickQuitButton);
-            _btnStart.onClick.RemoveListener(OnClickStartButton);
         }
         #endregion
 
         #region // [Func] Callback //
+        void OnClickRegistButton()
+        {
+
+        }
+
+        void OnClickExamButton()
+        {
+
+        }
+
         void OnClickQuitButton()
         {
             CommonFunc.QuitApp();
-        }
-
-        void OnClickStartButton()
-        {
-            SceneManager.Instance.ChangeScene(SceneManager.E_SCENE_TYPE.Lobby);
         }
         #endregion
     }
