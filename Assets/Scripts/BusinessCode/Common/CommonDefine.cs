@@ -6,18 +6,23 @@ namespace Jenny
 {
     public enum E_MainUI
     {
+        None = -1,
         MainUI_Intro_Base,
 
-        Max,
+        Last,
     }
 
     public enum E_SubUI
     {
-        Max,
+        None = -1,
+
+        Last,
     }
 
     public enum E_MsgUI
     {
-        Max,
+        None = -1,
+
+        Last,
     }
 }

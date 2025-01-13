@@ -17,16 +17,38 @@ namespace Jenny
 
 
         #region // [Func] MainUI //
-        public bool AddMainUI(E_MainUI mainUI)
+        public void OpenMainUI(E_MainUI type)
         {
-            return true;
+            _mainUIController.OpenUI(type);
+        }
+
+        public void CloseMainUI()
+        {
+            _mainUIController.CloseUI();
         }
         #endregion
 
         #region // [Func] SubUI //
-        public bool AddSubUI(E_SubUI subUI)
+        public void OpenSubUI(E_SubUI type)
         {
-            return true;
+            _subUIController.OpenUI(type);
+        }
+
+        public void CloseSubUI()
+        {
+            _subUIController.CloseUI();
+        }
+        #endregion
+
+        #region // [Func] MsgUI //
+        public void OpenMsgUI(E_MsgUI type)
+        {
+            _msgUIController.OpenUI(type);
+        }
+
+        public void CloseMsgUI()
+        {
+            _msgUIController.CloseUI();
         }
         #endregion
     }

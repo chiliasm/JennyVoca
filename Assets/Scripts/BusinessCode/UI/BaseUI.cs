@@ -36,11 +36,15 @@ namespace Jenny
         #region // [Func] Show //
         virtual public void Show(bool isImmediate = false, System.Action lpCompleteCallback = null)
         {
+            Go.SetActive(true);
+
             lpCompleteCallback?.Invoke();
         }
 
         virtual public void Hide(bool isImmediate = false, System.Action lpCompleteCallback = null)
         {
+            Go.SetActive(false);
+
             lpCompleteCallback?.Invoke();
         }
         #endregion

@@ -40,6 +40,7 @@ namespace Jenny
             switch (mSceneType)
             {
                 case E_SCENE_TYPE.Intro:
+                    _uiController.OpenMainUI(E_MainUI.MainUI_Intro_Base);
                     break;
                 case E_SCENE_TYPE.Lobby:
                     break;
