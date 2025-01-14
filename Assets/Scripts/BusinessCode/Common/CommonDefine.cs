@@ -6,6 +6,8 @@ namespace Jenny
 
         MainUI_Intro_Base,
         MainUI_Lobby_Base,
+        MainUI_Lobby_Regist,
+        MainUI_Lobby_Exam,
 
         Last,
     }

@@ -55,6 +55,7 @@ SpriteAtlas:
     - 487190e0761e0c146b081820cbb22661: 21300000
     - 6388c3016af3b4f428f0f96045080cc5: 21300000
     - dd4449916a012f448af5f5b6ae7fd5e9: 21300000
+    - 2d3be1c1a02fc0e41a2b83d17aefca28: 21300000
     - ccd998225e082da4c9fe2d752905eb19: 21300000
     - 268c2952f5f220f489b8facc24c173c7: 21300000
     - 5ceaee527a44e7641b82ec3e6b72523f: 21300000
@@ -85,6 +86,7 @@ SpriteAtlas:
     - 0fabb35cd74be2d4a8e0a7118f99ee51: 21300000
     - 5e84ee7c7b686994fb511e9342015721: 21300000
     - 744d1abca14237c4cacaf5c53396158e: 21300000
+    - ce75d62dd9d015143a785f17c7f0f6b4: 21300000
     - 80b67c3dd7e893b419eb374e873f9f2b: 21300000
     - a182684d23942cb4085a9b09d0fc1a81: 21300000
     - a2c7e89d1a46d5c419694ddf9e22faf4: 21300000
@@ -104,6 +106,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 487190e0761e0c146b081820cbb22661, type: 3}
   - {fileID: 21300000, guid: 6388c3016af3b4f428f0f96045080cc5, type: 3}
   - {fileID: 21300000, guid: dd4449916a012f448af5f5b6ae7fd5e9, type: 3}
+  - {fileID: 21300000, guid: 2d3be1c1a02fc0e41a2b83d17aefca28, type: 3}
   - {fileID: 21300000, guid: ccd998225e082da4c9fe2d752905eb19, type: 3}
   - {fileID: 21300000, guid: 268c2952f5f220f489b8facc24c173c7, type: 3}
   - {fileID: 21300000, guid: 5ceaee527a44e7641b82ec3e6b72523f, type: 3}
@@ -134,6 +137,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 0fabb35cd74be2d4a8e0a7118f99ee51, type: 3}
   - {fileID: 21300000, guid: 5e84ee7c7b686994fb511e9342015721, type: 3}
   - {fileID: 21300000, guid: 744d1abca14237c4cacaf5c53396158e, type: 3}
+  - {fileID: 21300000, guid: ce75d62dd9d015143a785f17c7f0f6b4, type: 3}
   - {fileID: 21300000, guid: 80b67c3dd7e893b419eb374e873f9f2b, type: 3}
   - {fileID: 21300000, guid: a182684d23942cb4085a9b09d0fc1a81, type: 3}
   - {fileID: 21300000, guid: a2c7e89d1a46d5c419694ddf9e22faf4, type: 3}
@@ -152,6 +156,7 @@ SpriteAtlas:
   - Button_Square_White
   - Frame_Circle_White
   - Frame_Trapezoid_Yellow
+  - Icon_Medal
   - Icon_Settings
   - Button_Square_Yellow
   - Frame_Trapezoid_Pink
@@ -182,6 +187,7 @@ SpriteAtlas:
   - Icon_Pause
   - Frame_Trapezoid_Honey
   - Button_Trapezoid_White
+  - Icon_Balloon_Yellow
   - Icon_Exit
   - Icon_Close
   - Icon_Music_On
