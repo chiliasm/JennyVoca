@@ -13,7 +13,7 @@ namespace Jenny
         [SerializeField]
         CanvasGroup _cg;
         [SerializeField]
-        Button _btnTouchBg;
+        protected Button _btnTouchBg;
         #endregion
 
 
@@ -21,15 +21,11 @@ namespace Jenny
         protected override void OnEnable()
         {
             base.OnEnable();
-
-            _btnTouchBg.onClick.AddListener(OnClickTouchBgButton);
         }
 
         protected override void OnDisable()
         {
             base.OnDisable();
-
-            _btnTouchBg.onClick.RemoveListener(OnClickTouchBgButton);
         }
         #endregion
 
@@ -47,13 +43,12 @@ namespace Jenny
 
             lpCompleteCallback?.Invoke();
         }
-        #endregion
 
-        #region // [Func] Callback //
-        void OnClickTouchBgButton()
+        virtual public void CloseUI()
         {
-            Hide();
         }
         #endregion
+
+        
     }
 }

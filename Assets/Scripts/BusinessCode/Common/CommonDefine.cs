@@ -24,6 +24,8 @@ namespace Jenny
     {
         None = -1,
 
+        MsgUI_Common,
+
         Last,
     }
 }
