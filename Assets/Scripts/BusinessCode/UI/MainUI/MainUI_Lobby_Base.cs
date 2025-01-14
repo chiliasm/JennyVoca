@@ -40,7 +40,7 @@ namespace Jenny
         #region // [Func] Callback //
         void OnClickRegistButton()
         {
-
+            UIManager.Instance.OpenUI(E_MainUI.MainUI_Lobby_Regist);
         }
 
         void OnClickExamButton()

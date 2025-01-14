@@ -14,6 +14,10 @@ namespace Jenny
         #region // [Func] Show //
         public void OpenUI(E_MainUI type)
         {
+            var lastMainUI = GetLastMainUI();
+            if (lastMainUI != null)
+                lastMainUI.Hide(true);
+
             if (mDataDic.TryGetValue(type, out var mainUI) == false)
             {
                 mainUI = UIManager.Instance.GetOrNewUI(type);
@@ -36,22 +40,42 @@ namespace Jenny
                 type = GetLastOrderUI();
             if (type != E_MainUI.None)
             {
-                if (mDataDic.TryGetValue(type, out var mainUI))
+                var mainUI = GetMainUI(type);
+                if (mainUI != null)
                 {
                     mainUI.Hide(true);
                     mOrderList.Remove(type);
                 }   
             }
+
+            var lastMainUI = GetLastMainUI();
+            if (lastMainUI != null)
+                lastMainUI.Show(true);
         }
 
         public void CloseAllUI()
         {
             foreach (var it in mOrderList)
             {
-                if (mDataDic.TryGetValue(it, out var mainUI))
+                var mainUI = GetMainUI(it);
+                if (mainUI != null)
                     mainUI.Hide(true);
             }
             mOrderList.Clear();
+        }
+        #endregion
+
+        #region // [Func] MainUI //
+        MainUI GetMainUI(E_MainUI type)
+        {
+            if (mDataDic.TryGetValue(type, out var mainUI) == false)
+                return null;
+            return mainUI;
+        }
+
+        MainUI GetLastMainUI()
+        {
+            return GetMainUI(GetLastOrderUI());
         }
         #endregion
 

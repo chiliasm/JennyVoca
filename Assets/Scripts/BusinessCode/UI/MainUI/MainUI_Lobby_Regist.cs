@@ -77,7 +77,7 @@ namespace Jenny
             _btnClose.onClick.RemoveListener(OnClickCloseButton);
             _btnRegist.onClick.RemoveListener(OnClickRegistButton);
 
-            mDataList.Clear();
+            Clear();
         }
 
         protected override void Update()
@@ -95,6 +95,12 @@ namespace Jenny
 
             foreach (var it in mItemList)
                 it.SetSelect(false);
+        }
+
+        public override void Clear()
+        {
+            mDataList.Clear();
+            RemoveAllItem();
         }
         #endregion
 
@@ -125,6 +131,8 @@ namespace Jenny
                 {
                     item.SetData(id, it, OnSelectedCallback, OnModifyCallback, OnDeleteCallback);
                     item.gameObject.SetActive(true);
+                    mItemList.Add(item);
+
                     id++;
                 }
             }
