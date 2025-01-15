@@ -54,6 +54,8 @@ namespace Jenny
 
         readonly List<ItemRegistInfo> mItemList = new();
         readonly Queue<ItemRegistInfo> mItemPool = new();
+
+        Vector2 mScrollPos;
         #endregion
 
 
@@ -94,6 +96,7 @@ namespace Jenny
             mModifyID = -1;
             _inputEn.text = string.Empty;
             _inputKr.text = string.Empty;
+            //_scrollList.content.anchoredPosition;
 
             foreach (var it in mItemList)
                 it.SetSelect(false);
