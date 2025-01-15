@@ -14,5 +14,12 @@ namespace Jenny
             Application.Quit();
 #endif
         }
+
+        public static void OpenMsgUI(string msg)
+        {
+            var msgUI = UIManager.Instance.OpenUI(E_MsgUI.MsgUI_Common) as MsgUI_Common;
+            if (msgUI != null)
+                msgUI.SetData(msg);
+        }
     }
 }

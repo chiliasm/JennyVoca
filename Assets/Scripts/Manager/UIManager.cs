@@ -119,22 +119,25 @@ namespace Jenny
         #endregion
 
         #region // [Func] OpenUI //
-        public void OpenUI(E_MainUI type)
+        public MainUI OpenUI(E_MainUI type)
         {
             if (mUIController != null)
-                mUIController.OpenUI(type);
+                return mUIController.OpenUI(type);
+            return null;
         }
 
-        public void OpenUI(E_SubUI type)
+        public SubUI OpenUI(E_SubUI type)
         {
             if (mUIController != null)
-                mUIController.OpenUI(type);
+                return mUIController.OpenUI(type);
+            return null;
         }
 
-        public void OpenUI(E_MsgUI type)
+        public MsgUI OpenUI(E_MsgUI type)
         {
             if (mUIController != null)
-                mUIController.OpenUI(type);
+                return mUIController.OpenUI(type);
+            return null;
         }
         #endregion
 

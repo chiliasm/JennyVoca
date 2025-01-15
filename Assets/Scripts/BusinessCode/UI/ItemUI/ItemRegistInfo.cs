@@ -101,16 +101,22 @@ namespace Jenny
         #region // [Func] Callback //
         void OnClickBgButton()
         {
+            SoundManager.Instance.Play(E_Sound_Item.Sfx_Click_Bubble);
+
             mSelectCallback?.Invoke(mID);
         }
 
         void OnClickModifyButton()
         {
+            SoundManager.Instance.Play(E_Sound_Item.Sfx_Click_Bubble);
+
             mModifyCallback?.Invoke(mID);
         }
 
         void OnClickDeleteButton()
         {
+            SoundManager.Instance.Play(E_Sound_Item.Sfx_Click_Bubble);
+
             mDeleteCallback?.Invoke(mID);
         }
         #endregion

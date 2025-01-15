@@ -28,4 +28,21 @@ namespace Jenny
 
         Last,
     }
+
+    public enum E_Sound_Item
+    {
+        None = -1,
+
+        //  Bgm.
+        Bgm_Begin,
+        Bgm_End,
+
+
+        //  Sfx.
+        Sfx_Begin,
+        Sfx_Click_Bubble,
+        Sfx_End,
+
+        Max,
+    }
 }

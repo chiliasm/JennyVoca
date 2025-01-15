@@ -13,7 +13,7 @@ namespace Jenny
 
 
         #region // [Func] Show //
-        public void OpenUI(E_SubUI type)
+        public SubUI OpenUI(E_SubUI type)
         {
             if (mDataDic.TryGetValue(type, out var subUI) == false)
             {
@@ -27,8 +27,10 @@ namespace Jenny
                 subUI.transform.SetParent(Tr);
                 subUI.transform.SetAsLastSibling();
                 subUI.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
+                subUI.SetType(type);
                 subUI.Show(true);
             }
+            return subUI;
         }
 
         public void CloseUI(E_SubUI type = E_SubUI.Last)

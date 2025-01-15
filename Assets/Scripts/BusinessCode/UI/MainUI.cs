@@ -8,7 +8,6 @@ namespace Jenny
     {
         #region // [Var] Data //
         protected E_MainUI mMainUIType = E_MainUI.None;
-        public E_MainUI MainUIType { get { return mMainUIType; } }
         #endregion
 
 
@@ -25,6 +24,18 @@ namespace Jenny
             base.OnDisable();
 
             _btnTouchBg.onClick.RemoveListener(OnClickTouchBgButton);
+        }
+        #endregion
+
+        #region // [Func] Init //
+        protected override void InitUI()
+        {
+            base.InitUI();
+        }
+
+        public void SetType(E_MainUI type)
+        {
+            mMainUIType = type;
         }
         #endregion
 

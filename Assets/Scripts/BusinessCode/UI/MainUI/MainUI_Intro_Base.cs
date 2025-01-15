@@ -31,14 +31,25 @@ namespace Jenny
         }
         #endregion
 
+        #region // [Func] Init //
+        protected override void InitUI()
+        {
+            base.InitUI();
+        }
+        #endregion
+
         #region // [Func] Callback //
         void OnClickQuitButton()
         {
+            SoundManager.Instance.Play(E_Sound_Item.Sfx_Click_Bubble);
+
             CommonFunc.QuitApp();
         }
 
         void OnClickStartButton()
         {
+            SoundManager.Instance.Play(E_Sound_Item.Sfx_Click_Bubble);
+
             SceneManager.Instance.ChangeScene(SceneManager.E_SCENE_TYPE.Lobby);
         }
         #endregion

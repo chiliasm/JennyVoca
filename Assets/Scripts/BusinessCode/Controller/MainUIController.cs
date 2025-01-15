@@ -12,7 +12,7 @@ namespace Jenny
 
 
         #region // [Func] Show //
-        public void OpenUI(E_MainUI type)
+        public MainUI OpenUI(E_MainUI type)
         {
             var lastMainUI = GetLastMainUI();
             if (lastMainUI != null)
@@ -30,8 +30,10 @@ namespace Jenny
                 mainUI.transform.SetParent(Tr);
                 mainUI.transform.SetAsLastSibling();
                 mainUI.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
+                mainUI.SetType(type);
                 mainUI.Show(true);
             }
+            return mainUI;
         }
 
         public void CloseUI(E_MainUI type = E_MainUI.Last)

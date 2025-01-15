@@ -13,7 +13,7 @@ namespace Jenny
 
 
         #region // [Func] Show //
-        public void OpenUI(E_MsgUI type)
+        public MsgUI OpenUI(E_MsgUI type)
         {
             if (mDataDic.TryGetValue(type, out var msgUI) == false)
             {
@@ -27,8 +27,10 @@ namespace Jenny
                 msgUI.transform.SetParent(Tr);
                 msgUI.transform.SetAsLastSibling();
                 msgUI.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
+                msgUI.SetType(type);
                 msgUI.Show(true);
             }
+            return msgUI;
         }
 
         public void CloseUI(E_MsgUI type = E_MsgUI.Last)

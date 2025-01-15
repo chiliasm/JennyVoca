@@ -85,10 +85,12 @@ namespace Jenny
             base.Update();
         }
         #endregion
-
+        
         #region // [Func] Init //
-        void InitValue()
+        protected override void InitUI()
         {
+            base.InitUI();
+
             mModifyID = -1;
             _inputEn.text = string.Empty;
             _inputKr.text = string.Empty;
@@ -180,16 +182,20 @@ namespace Jenny
         #region // [Func] Callback //
         void OnClickCloseButton()
         {
-            UIManager.Instance.CloseUI(E_MainUI.Last);
+            SoundManager.Instance.Play(E_Sound_Item.Sfx_Click_Bubble);
+
+            CloseUI();
         }
 
         void OnClickRegistButton()
         {
-
+            SoundManager.Instance.Play(E_Sound_Item.Sfx_Click_Bubble);
         }
 
         void OnClickAddButton()
         {
+            SoundManager.Instance.Play(E_Sound_Item.Sfx_Click_Bubble);
+
             var en = _inputEn.text;
             var kr = _inputKr.text;
             if (string.IsNullOrWhiteSpace(en) || string.IsNullOrWhiteSpace(kr))
@@ -202,12 +208,14 @@ namespace Jenny
 
             mDataList.Add(new(en, kr));
 
-            InitValue();
+            InitUI();
             UpdateUI();
         }
 
         void OnClickModifyButton()
         {
+            SoundManager.Instance.Play(E_Sound_Item.Sfx_Click_Bubble);
+
             if (mDataList.Count <= mModifyID || mModifyID < 0 )
                 return;
 
@@ -217,7 +225,7 @@ namespace Jenny
                 info.En = _inputEn.text;
                 info.Kr = _inputKr.text;
 
-                InitValue();
+                InitUI();
                 UpdateUI();
             }
         }
@@ -254,7 +262,7 @@ namespace Jenny
 
             mDataList.RemoveAt(id);
 
-            InitValue();
+            InitUI();
             UpdateUI();
         }
         #endregion

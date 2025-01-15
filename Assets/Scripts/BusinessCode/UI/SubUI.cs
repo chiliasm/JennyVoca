@@ -28,6 +28,18 @@ namespace Jenny
         }
         #endregion
 
+        #region // [Func] Init //
+        protected override void InitUI()
+        {
+            base.InitUI();
+        }
+
+        public void SetType(E_SubUI type)
+        {
+            mSubUIType = type;
+        }
+        #endregion
+
         #region // [Func] Close //
         public override void CloseUI()
         {

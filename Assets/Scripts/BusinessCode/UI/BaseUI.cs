@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -29,6 +28,12 @@ namespace Jenny
         }
         #endregion
 
+        #region // [Func] Init //
+        protected virtual void InitUI()
+        {
+        }
+        #endregion
+
         #region // [Func] Show //
         virtual public void Show(bool isImmediate = false, System.Action lpCompleteCallback = null)
         {
@@ -48,7 +53,5 @@ namespace Jenny
         {
         }
         #endregion
-
-        
     }
 }

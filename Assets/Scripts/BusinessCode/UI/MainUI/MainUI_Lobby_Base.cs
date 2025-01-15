@@ -37,19 +37,30 @@ namespace Jenny
         }
         #endregion
 
+        #region // [Func] Init //
+        protected override void InitUI()
+        {
+            base.InitUI();
+        }
+        #endregion
+
         #region // [Func] Callback //
         void OnClickRegistButton()
         {
+            SoundManager.Instance.Play(E_Sound_Item.Sfx_Click_Bubble);
+
             UIManager.Instance.OpenUI(E_MainUI.MainUI_Lobby_Regist);
         }
 
         void OnClickExamButton()
         {
-
+            SoundManager.Instance.Play(E_Sound_Item.Sfx_Click_Bubble);
         }
 
         void OnClickQuitButton()
         {
+            SoundManager.Instance.Play(E_Sound_Item.Sfx_Click_Bubble);
+
             CommonFunc.QuitApp();
         }
         #endregion

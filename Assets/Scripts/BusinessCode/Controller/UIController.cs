@@ -15,24 +15,24 @@ namespace Jenny
 
 
         #region // [Func] OpenUI //
-        public void OpenUI(E_MainUI type)
+        public MainUI OpenUI(E_MainUI type)
         {
             //  MainUI 타입이 다르면 SubUI는 모두 닫는다.
             var lastType = _mainUIController.GetLastOrderUI();
             if (lastType != E_MainUI.None && lastType != type)
                 _subUIController.CloseAllUI();  
 
-            _mainUIController.OpenUI(type);
+            return _mainUIController.OpenUI(type);
         }
 
-        public void OpenUI(E_SubUI type)
+        public SubUI OpenUI(E_SubUI type)
         {
-            _subUIController.OpenUI(type);
+            return _subUIController.OpenUI(type);
         }
 
-        public void OpenUI(E_MsgUI type)
+        public MsgUI OpenUI(E_MsgUI type)
         {
-            _msgUIController.OpenUI(type);
+            return _msgUIController.OpenUI(type);
         }
         #endregion
 

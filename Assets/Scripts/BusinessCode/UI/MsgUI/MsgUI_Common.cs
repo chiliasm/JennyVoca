@@ -19,5 +19,61 @@ namespace Jenny
         [SerializeField]
         TMP_Text _textMsg;
         #endregion
+
+
+        #region // [Func] Unity //
+        protected override void OnEnable()
+        {
+            base.OnEnable();
+
+            _btnClose.onClick.AddListener(OnClickCloseButton);
+            _btnCancel.onClick.AddListener(OnClickCancelButton);
+            _btnOK.onClick.AddListener(OnClickOKButton);
+        }
+
+        protected override void OnDisable()
+        {
+            base.OnDisable();
+
+            _btnClose.onClick.RemoveListener(OnClickCloseButton);
+            _btnCancel.onClick.RemoveListener(OnClickCancelButton);
+            _btnOK.onClick.RemoveListener(OnClickOKButton);
+        }
+        #endregion
+
+        #region // [Func] Init //
+        protected override void InitUI()
+        {
+            base.InitUI();
+        }
+
+        public void SetData(string msg)
+        {
+            _textMsg.text = msg;
+        }
+        #endregion
+
+        #region // [Func] Callback //
+        void OnClickCloseButton()
+        {
+            SoundManager.Instance.Play(E_Sound_Item.Sfx_Click_Bubble);
+
+            CloseUI();
+        }
+
+        void OnClickCancelButton()
+        {
+            SoundManager.Instance.Play(E_Sound_Item.Sfx_Click_Bubble);
+
+            CloseUI();
+        }
+
+        void OnClickOKButton()
+        {
+            SoundManager.Instance.Play(E_Sound_Item.Sfx_Click_Bubble);
+
+            CloseUI();
+        }
+        #endregion
     }
 }
