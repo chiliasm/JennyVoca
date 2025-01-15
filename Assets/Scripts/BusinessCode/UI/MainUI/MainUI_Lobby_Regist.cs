@@ -96,7 +96,6 @@ namespace Jenny
             mModifyID = -1;
             _inputEn.text = string.Empty;
             _inputKr.text = string.Empty;
-            //_scrollList.content.anchoredPosition;
 
             foreach (var it in mItemList)
                 it.SetSelect(false);
@@ -135,7 +134,7 @@ namespace Jenny
                 if (item != null)
                 {
                     item.SetData(id, it, OnSelectedCallback, OnModifyCallback, OnDeleteCallback);
-                    item.gameObject.SetActive(true);
+                    item.Show(true);
                     mItemList.Add(item);
 
                     id++;
@@ -168,7 +167,7 @@ namespace Jenny
         {
             if (info != null)
             {
-                info.gameObject.SetActive(false);
+                info.Show(false, true);
                 info.transform.SetParent(_trItemPool);
                 mItemPool.Enqueue(info);
             }   

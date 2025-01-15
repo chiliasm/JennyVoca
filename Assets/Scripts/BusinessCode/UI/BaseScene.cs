@@ -28,7 +28,16 @@ namespace Jenny
         {
             base.Start();
 
+            InitCamera();
+
             InitMainUI();
+        }
+        #endregion
+
+        #region // [Func] Camera //
+        void InitCamera()
+        {
+            _camera.backgroundColor = Color.white;
         }
         #endregion
 

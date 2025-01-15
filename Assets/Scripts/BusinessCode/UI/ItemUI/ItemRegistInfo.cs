@@ -11,6 +11,8 @@ namespace Jenny
         #region // [Var] Unity //
         [Header("== ItemRegistInfo ==")]
         [SerializeField]
+        CanvasGroup _canvas;
+        [SerializeField]
         Button _btnBg;
         [SerializeField]
         Image _imgBg;
@@ -38,6 +40,9 @@ namespace Jenny
 
         readonly Color COLOR_BG_DEFAULT = new(0.96f, 0.85f, 0.59f, 1f);
         readonly Color COLOR_BG_SELECT = new(0.85f, 0.85f, 0.85f, 1f);
+        const float FADE_UPDATE_TIME = 0.5f;
+
+        Coroutine mCorFade;
         #endregion
 
 
@@ -58,6 +63,8 @@ namespace Jenny
             _btnBg.onClick.RemoveListener(OnClickBgButton);
             _btnModify.onClick.RemoveListener(OnClickModifyButton);
             _btnDelete.onClick.RemoveListener(OnClickDeleteButton);
+
+            ClearCoroutine(ref mCorFade);
         }
         #endregion
 
@@ -79,6 +86,49 @@ namespace Jenny
             mIsSelected = isSelect;
 
             UpdateUISelect();
+        }
+        #endregion
+
+        #region // [Func] Show, Hide //
+        public void Show(bool isShow, bool isImmediate = true)
+        {
+            if (isImmediate)
+                Go.SetActive(isShow);
+            else
+            {
+                if (isShow)
+                {
+                    Go.SetActive(true);
+                    if (ClearCoroutine(ref mCorFade))
+                        mCorFade = StartCoroutine(CorFade(0f, 1f, () => {
+                        }));
+                }
+                else
+                {
+                    if (ClearCoroutine(ref mCorFade))
+                        mCorFade = StartCoroutine(CorFade(1f, 0f, () => {
+                            Go.SetActive(false);
+                        }));
+                }
+            }
+        }
+
+        IEnumerator CorFade(float from, float to, System.Action lpCompleteCallback = null)
+        {
+            _canvas.alpha = from;
+
+            var rate = 0f;
+            var beginTime = Time.realtimeSinceStartup;
+            while(rate <= 1f)
+            {
+                yield return null;
+
+                rate = Mathf.Clamp01((Time.realtimeSinceStartup - beginTime) / FADE_UPDATE_TIME);
+                _canvas.alpha = rate;
+            }
+
+            lpCompleteCallback?.Invoke();
+            mCorFade = null;
         }
         #endregion
 
