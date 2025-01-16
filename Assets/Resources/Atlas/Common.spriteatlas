@@ -90,6 +90,7 @@ SpriteAtlas:
     - bba67b0b03dee9c41b92a7ac57d53f4e: 21300000
     - 6ec6bd3b2a85b3c42aad49dea80f6f2b: 21300000
     - 35372d4b820fecc4d8ee754997ab9cdf: 21300000
+    - 488e00ab2387e3d42b8b82a8a79368a0: 21300000
     - 0fabb35cd74be2d4a8e0a7118f99ee51: 21300000
     - 5e84ee7c7b686994fb511e9342015721: 21300000
     - 744d1abca14237c4cacaf5c53396158e: 21300000
@@ -148,6 +149,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: bba67b0b03dee9c41b92a7ac57d53f4e, type: 3}
   - {fileID: 21300000, guid: 6ec6bd3b2a85b3c42aad49dea80f6f2b, type: 3}
   - {fileID: 21300000, guid: 35372d4b820fecc4d8ee754997ab9cdf, type: 3}
+  - {fileID: 21300000, guid: 488e00ab2387e3d42b8b82a8a79368a0, type: 3}
   - {fileID: 21300000, guid: 0fabb35cd74be2d4a8e0a7118f99ee51, type: 3}
   - {fileID: 21300000, guid: 5e84ee7c7b686994fb511e9342015721, type: 3}
   - {fileID: 21300000, guid: 744d1abca14237c4cacaf5c53396158e, type: 3}
@@ -205,6 +207,7 @@ SpriteAtlas:
   - Frame_Border_Red
   - Frame_Border_Pink
   - Icon_Shop
+  - bg_01
   - Icon_Pause
   - Frame_Trapezoid_Honey
   - Button_Trapezoid_White

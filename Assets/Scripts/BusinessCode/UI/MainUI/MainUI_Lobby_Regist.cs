@@ -55,7 +55,7 @@ namespace Jenny
         readonly List<ItemRegistInfo> mItemList = new();
         readonly Queue<ItemRegistInfo> mItemPool = new();
 
-        Vector2 mScrollPos;
+        Coroutine mCorUpdateUIItemList;
         #endregion
 
 
@@ -104,7 +104,7 @@ namespace Jenny
         public override void Clear()
         {
             mDataList.Clear();
-            RemoveAllItem();
+            RemoveAllScrollItem();
         }
         #endregion
 
@@ -125,21 +125,20 @@ namespace Jenny
 
         void UpdateUIItemList()
         {
-            RemoveAllItem();
+            RemoveAllScrollItem();
 
-            int id = 0;
+            if (ClearCoroutine(ref mCorUpdateUIItemList))
+                mCorUpdateUIItemList = StartCoroutine(CorUpdateUIItemList());
+        }
+
+        IEnumerator CorUpdateUIItemList()
+        {
             foreach (var it in mDataList)
             {
-                var item = GetOrNewItem();
-                if (item != null)
-                {
-                    item.SetData(id, it, OnSelectedCallback, OnModifyCallback, OnDeleteCallback);
-                    item.Show(true);
-                    mItemList.Add(item);
-
-                    id++;
-                }
+                AddScrollItem(it);
+                yield return new WaitForSeconds(0.1f);
             }
+            mCorUpdateUIItemList = null;
         }
         #endregion
 
@@ -152,6 +151,7 @@ namespace Jenny
             else
             {
                 var o = GameObject.Instantiate(_itemObject);
+                o.SetActive(false);
                 if (o.TryGetComponent<ItemRegistInfo>(out var comp))
                     info = comp;
             }
@@ -163,20 +163,58 @@ namespace Jenny
             return info;
         }
 
-        void RemoveItem(ItemRegistInfo info)
+        void RefreshItemID()
         {
-            if (info != null)
-            {
-                info.Show(false, true);
-                info.transform.SetParent(_trItemPool);
-                mItemPool.Enqueue(info);
-            }   
+            for (int i = 0; i < mItemList.Count; i++)
+                mItemList[i].ID = i;
         }
 
-        void RemoveAllItem()
+        void AddScrollItem(RegistInfo info)
         {
-            foreach (var it in mItemList)
-                RemoveItem(it);
+            if (info == null)
+                return;
+            
+            var itemInfo = GetOrNewItem();
+            if (itemInfo != null)
+            {
+                itemInfo.SetData(info, OnSelectedCallback, OnModifyCallback, OnDeleteCallback);
+                itemInfo.Show(true, false, () => {
+                });
+                mItemList.Add(itemInfo);
+
+                RefreshItemID();
+            }
+        }
+
+        void RemoveScrollItem(int id)
+        {
+            if (mItemList.Count > id)
+            {
+                var itemInfo = mItemList[id];
+                itemInfo.Show(false, false, () => {
+                    itemInfo.transform.SetParent(_trItemPool);
+                });
+
+                if (mItemList.Remove(itemInfo))
+                {
+                    mItemPool.Enqueue(itemInfo);
+                    RefreshItemID();
+                }   
+            }
+        }
+
+        void RemoveAllScrollItem()
+        {
+            foreach (var itemInfo in mItemList)
+            {
+                if (itemInfo != null)
+                {
+                    itemInfo.Show(false, true, () => {
+                        itemInfo.transform.SetParent(_trItemPool);                        
+                    });
+                    mItemPool.Enqueue(itemInfo);
+                }
+            }
             mItemList.Clear();
         }
         #endregion
@@ -200,18 +238,31 @@ namespace Jenny
 
             var en = _inputEn.text;
             var kr = _inputKr.text;
-            if (string.IsNullOrWhiteSpace(en) || string.IsNullOrWhiteSpace(kr))
+            if (string.IsNullOrWhiteSpace(en))
+            {
+                CommonFunc.OpenMsgUI("'영어' 란을 입력해주세요.");
                 return;
+            }
+            if (string.IsNullOrWhiteSpace(kr))
+            {
+                CommonFunc.OpenMsgUI("'해석' 란을 입력해주세요.");
+                return;
+            }
+                
             foreach (var it in mDataList)
             {
                 if (en.Equals(it.En))
+                {
+                    CommonFunc.OpenMsgUI($"'{en}' 단어는 이미 등록되었습니다.");
                     return;
+                }                    
             }
 
-            mDataList.Add(new(en, kr));
+            RegistInfo info = new(en, kr);
+            mDataList.Add(info);
+            AddScrollItem(info);
 
             InitUI();
-            UpdateUI();
         }
 
         void OnClickModifyButton()
@@ -227,8 +278,10 @@ namespace Jenny
                 info.En = _inputEn.text;
                 info.Kr = _inputKr.text;
 
+                if (mItemList.Count > mModifyID)
+                    mItemList[mModifyID].SetData(info);
+
                 InitUI();
-                UpdateUI();
             }
         }
 
@@ -253,7 +306,7 @@ namespace Jenny
                 _inputKr.text = info.Kr;
 
                 mModifyID = id;
-                UpdateUI();
+                UpdateUIButton();
             }
         }
 
@@ -263,9 +316,9 @@ namespace Jenny
                 return;
 
             mDataList.RemoveAt(id);
+            RemoveScrollItem(id);
 
             InitUI();
-            UpdateUI();
         }
         #endregion
     }

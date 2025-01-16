@@ -6,12 +6,10 @@ using UnityEngine.UI;
 
 namespace Jenny
 {
-    public class ItemRegistInfo : BaseMonoBehaviour
+    public class ItemRegistInfo : BaseItemInfo
     {
         #region // [Var] Unity //
         [Header("== ItemRegistInfo ==")]
-        [SerializeField]
-        CanvasGroup _canvas;
         [SerializeField]
         Button _btnBg;
         [SerializeField]
@@ -29,8 +27,6 @@ namespace Jenny
         #endregion
 
         #region // [Var] Data //
-        int mID;
-        public int ID { get { return mID; } }
         MainUI_Lobby_Regist.RegistInfo mInfo;
         bool mIsSelected = false;
 
@@ -40,9 +36,6 @@ namespace Jenny
 
         readonly Color COLOR_BG_DEFAULT = new(0.96f, 0.85f, 0.59f, 1f);
         readonly Color COLOR_BG_SELECT = new(0.85f, 0.85f, 0.85f, 1f);
-        const float FADE_UPDATE_TIME = 0.5f;
-
-        Coroutine mCorFade;
         #endregion
 
 
@@ -63,19 +56,19 @@ namespace Jenny
             _btnBg.onClick.RemoveListener(OnClickBgButton);
             _btnModify.onClick.RemoveListener(OnClickModifyButton);
             _btnDelete.onClick.RemoveListener(OnClickDeleteButton);
-
-            ClearCoroutine(ref mCorFade);
         }
         #endregion
 
         #region // [Func] Set //
-        public void SetData(int id, MainUI_Lobby_Regist.RegistInfo info, System.Action<int> lpSelectCallback = null, System.Action<int> lpModifyCallback = null, System.Action<int> lpDeleteCallback = null)
+        public void SetData(MainUI_Lobby_Regist.RegistInfo info, System.Action<int> lpSelectCallback = null, System.Action<int> lpModifyCallback = null, System.Action<int> lpDeleteCallback = null)
         {
-            mID = id;
             mInfo = info;
-            mSelectCallback = lpSelectCallback;
-            mModifyCallback = lpModifyCallback; 
-            mDeleteCallback = lpDeleteCallback;
+            if (lpSelectCallback != null)
+                mSelectCallback = lpSelectCallback;
+            if (lpModifyCallback != null)
+                mModifyCallback = lpModifyCallback; 
+            if (lpDeleteCallback != null)
+                mDeleteCallback = lpDeleteCallback;
             mIsSelected = false;
 
             UpdateUI();
@@ -86,49 +79,6 @@ namespace Jenny
             mIsSelected = isSelect;
 
             UpdateUISelect();
-        }
-        #endregion
-
-        #region // [Func] Show, Hide //
-        public void Show(bool isShow, bool isImmediate = true)
-        {
-            if (isImmediate)
-                Go.SetActive(isShow);
-            else
-            {
-                if (isShow)
-                {
-                    Go.SetActive(true);
-                    if (ClearCoroutine(ref mCorFade))
-                        mCorFade = StartCoroutine(CorFade(0f, 1f, () => {
-                        }));
-                }
-                else
-                {
-                    if (ClearCoroutine(ref mCorFade))
-                        mCorFade = StartCoroutine(CorFade(1f, 0f, () => {
-                            Go.SetActive(false);
-                        }));
-                }
-            }
-        }
-
-        IEnumerator CorFade(float from, float to, System.Action lpCompleteCallback = null)
-        {
-            _canvas.alpha = from;
-
-            var rate = 0f;
-            var beginTime = Time.realtimeSinceStartup;
-            while(rate <= 1f)
-            {
-                yield return null;
-
-                rate = Mathf.Clamp01((Time.realtimeSinceStartup - beginTime) / FADE_UPDATE_TIME);
-                _canvas.alpha = rate;
-            }
-
-            lpCompleteCallback?.Invoke();
-            mCorFade = null;
         }
         #endregion
 
