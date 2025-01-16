@@ -98,7 +98,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 68137162203205862}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -741,10 +741,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: jenny
+  m_text: JENNY
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 36533cdbad406be49ae234be16ac904c, type: 2}
-  m_sharedMaterial: {fileID: 810013663886556418, guid: 36533cdbad406be49ae234be16ac904c, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ab210bfd067e53d4788d65416f820b4e, type: 2}
+  m_sharedMaterial: {fileID: 5766692656162758905, guid: ab210bfd067e53d4788d65416f820b4e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -768,8 +768,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 32
-  m_fontSizeBase: 32
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -778,7 +778,7 @@ MonoBehaviour:
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
-  m_characterSpacing: 0
+  m_characterSpacing: -5
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -844,7 +844,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 20, y: 0}
-  m_SizeDelta: {x: -140, y: 0}
+  m_SizeDelta: {x: -80, y: 0}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!1 &9071959686665085092
 GameObject:

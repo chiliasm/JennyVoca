@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Jenny
 {
@@ -21,5 +23,32 @@ namespace Jenny
                 IsOK = isOK;
             }
         }
+
+        #region // [Var] Unity //
+        [Header("== ExamUI ==")]
+        [SerializeField]
+        TMP_Text _textKr;
+        [SerializeField]
+        TMP_InputField _inputEn;
+        [SerializeField]
+        Button _btnConfirm;
+
+        [SerializeField]
+        Button _btnClose;
+
+        [SerializeField]
+        Button _btnFinish;
+        [SerializeField]
+        Button _btnStart;
+        [SerializeField]
+        Slider _sliderTimer;
+        [SerializeField]
+        TMP_Text _textTimer;
+
+        [SerializeField]
+        GameObject _goReady;
+        [SerializeField]
+        GameObject _goExam;
+        #endregion
     }
 }

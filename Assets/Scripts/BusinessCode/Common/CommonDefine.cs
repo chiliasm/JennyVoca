@@ -17,6 +17,8 @@ namespace Jenny
     {
         None = -1,
 
+        SubUI_AppSetting,
+
         Last,
     }
 

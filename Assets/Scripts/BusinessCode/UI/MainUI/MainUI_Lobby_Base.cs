@@ -8,12 +8,15 @@ namespace Jenny
     public class MainUI_Lobby_Base : MainUI
     {
         #region // [Var] Unity //
+        [Header("== LobbyBase ==")]
         [SerializeField]
         Button _btnRegist;
         [SerializeField]
         Button _btnExam;
         [SerializeField]
         Button _btnQuit;
+        [SerializeField]
+        Button _btnSetting;
         #endregion
 
 
@@ -25,6 +28,7 @@ namespace Jenny
             _btnRegist.onClick.AddListener(OnClickRegistButton);
             _btnExam.onClick.AddListener(OnClickExamButton);
             _btnQuit.onClick.AddListener(OnClickQuitButton);
+            _btnSetting.onClick.AddListener(OnClickSettingButton);
         }
 
         protected override void OnDisable()
@@ -34,6 +38,7 @@ namespace Jenny
             _btnRegist.onClick.RemoveListener(OnClickRegistButton);
             _btnExam.onClick.RemoveListener(OnClickExamButton);
             _btnQuit.onClick.RemoveListener(OnClickQuitButton);
+            _btnSetting.onClick.RemoveListener(OnClickSettingButton);
         }
         #endregion
 
@@ -62,6 +67,13 @@ namespace Jenny
             SoundManager.Instance.Play(E_Sound_Item.Sfx_Click_Bubble);
 
             CommonFunc.QuitApp();
+        }
+
+        void OnClickSettingButton()
+        {
+            SoundManager.Instance.Play(E_Sound_Item.Sfx_Click_Bubble);
+
+            UIManager.Instance.OpenUI(E_SubUI.SubUI_AppSetting);
         }
         #endregion
     }
