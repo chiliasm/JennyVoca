@@ -49,6 +49,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 409f09bd80e219f468cf905b5e37f235, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _canvas: {fileID: 8052757051438542574}
+  _textInfo: {fileID: 2954582751631144552}
+  _btnDelete: {fileID: 3465886513773746225}
 --- !u!1 &2324485842385232899
 GameObject:
   m_ObjectHideFlags: 0

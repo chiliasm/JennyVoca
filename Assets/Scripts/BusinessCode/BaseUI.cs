@@ -110,13 +110,13 @@ namespace Jenny
                 mScrollItemList[i].ID = i;
         }
 
-        protected void AddScrollItem(System.Action<ItemUI> lpSetDataCallback = null)
+        protected void AddScrollItem(bool isImmediate = false, System.Action<ItemUI> lpSetDataCallback = null)
         {
             var itemUI = GetOrNewItem();
             if (itemUI != null)
             {
                 lpSetDataCallback?.Invoke(itemUI);
-                itemUI.Show(true, false, () => {
+                itemUI.Show(true, isImmediate, () => {
                 });
                 mScrollItemList.Add(itemUI);
 
@@ -124,12 +124,12 @@ namespace Jenny
             }
         }
 
-        protected void RemoveScrollItem(int id)
+        protected void RemoveScrollItem(int id, bool isImmediate = false)
         {
             if (mScrollItemList.Count > id)
             {
                 var itemInfo = mScrollItemList[id];
-                itemInfo.Show(false, false, () => {
+                itemInfo.Show(false, isImmediate, () => {
                 });
 
                 if (mScrollItemList.Remove(itemInfo))
@@ -141,13 +141,13 @@ namespace Jenny
             }
         }
 
-        protected void RemoveAllScrollItem()
+        protected void RemoveAllScrollItem(bool isImmediate = true)
         {
             foreach (var itemInfo in mScrollItemList)
             {
                 if (itemInfo != null)
                 {
-                    itemInfo.Show(false, true, () => {
+                    itemInfo.Show(false, isImmediate, () => {
                     });
                     mScrollItemPool.Enqueue(itemInfo);
                 }

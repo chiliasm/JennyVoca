@@ -1795,12 +1795,10 @@ MonoBehaviour:
   _cg: {fileID: 3160150524787258543}
   _btnTouchBg: {fileID: 4000859802277001153}
   _scrollItemObject: {fileID: 8620842804267428087}
-  _btnClose: {fileID: 0}
-  _btnConfirm: {fileID: 0}
-  _inputName: {fileID: 0}
-  _scrollList: {fileID: 0}
-  _itemObject: {fileID: 0}
-  _trItemPool: {fileID: 0}
+  _btnClose: {fileID: 6622109662792124850}
+  _btnConfirm: {fileID: 1801801962470784382}
+  _inputName: {fileID: 8995293936491538538}
+  _scrollList: {fileID: 5100707985517009149}
 --- !u!1 &9149735586609768401
 GameObject:
   m_ObjectHideFlags: 0
@@ -2010,6 +2008,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 893258342015612107, guid: 97c7e871fa6a9b4438312b7ec48746c0, type: 3}
   m_PrefabInstance: {fileID: 1326188289592820806}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6622109662792124850 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5296766004827688436, guid: 97c7e871fa6a9b4438312b7ec48746c0, type: 3}
+  m_PrefabInstance: {fileID: 1326188289592820806}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3879285987722335679
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2245,6 +2254,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97c7e871fa6a9b4438312b7ec48746c0, type: 3}
+--- !u!114 &1801801962470784382 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5296766004827688436, guid: 97c7e871fa6a9b4438312b7ec48746c0, type: 3}
+  m_PrefabInstance: {fileID: 5800827397120110730}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &6693985609751200833 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 893258342015612107, guid: 97c7e871fa6a9b4438312b7ec48746c0, type: 3}

@@ -11,14 +11,17 @@ namespace Jenny
         public class RegistVocaScrollItemData : BaseScrollItemData
         {
             public string Name;
+            public int Count;
 
-            public RegistVocaScrollItemData(string name)
+            public RegistVocaScrollItemData(string name, int count)
             {
                 Name = name;
+                Count = count;
             }
         }
 
         #region // [Var] Unity //
+        [Header("== RegistVoca ==")]
         [SerializeField]
         Button _btnClose;
         [SerializeField]
@@ -29,13 +32,12 @@ namespace Jenny
 
         [SerializeField]
         ScrollRect _scrollList;
-        [SerializeField]
-        GameObject _itemObject;
-        [SerializeField]
-        Transform _trItemPool;
         #endregion
 
         #region // [Var] Data //
+        string mRegistName;
+        readonly List<RegistVocaScrollItemData> mDataList = new();
+
         readonly List<ItemUIRegistVocaInfo> mItemList = new();
         readonly Queue<ItemUIRegistVocaInfo> mItemPool = new();
         #endregion
@@ -68,96 +70,54 @@ namespace Jenny
 
             RemoveAllScrollItem();
         }
+
+        protected override void InitUI()
+        {
+            base.InitUI();
+
+            _inputName.text = string.Empty;
+        }
+
+        public void SetData()
+        {
+            InitUI();
+
+            mDataList.Clear();
+            var container = DataManager.Instance.GetVocaContainer();
+            if (container != null)
+            {
+                foreach (var it in container.DataList)
+                    mDataList.Add(new(it.OrderName, it.InfoList.Count));
+            }
+
+            UpdateUI();
+        }
         #endregion
 
         #region // [Func] UpdateUI //
         void UpdateUI()
         {
-
+            UpdateUIScroll();
         }
 
         void UpdateUIScroll()
         {
+            RemoveAllScrollItem();
 
-        }
-        #endregion
-
-        #region // [Func] Scroll //
-        ItemUIRegistVocaInfo GetOrNewItem()
-        {
-            ItemUIRegistVocaInfo info = null;
-            if (mItemPool.Count > 0)
-                info = mItemPool.Dequeue();
-            else
+            foreach (var it in mDataList)
             {
-                var o = GameObject.Instantiate(_itemObject);
-                o.SetActive(false);
-                if (o.TryGetComponent<ItemUIRegistVocaInfo>(out var comp))
-                    info = comp;
-            }
-            if (info != null)
-            {
-                info.transform.SetParent(_scrollList.content);
-                info.transform.SetAsFirstSibling();
-            }
-            return info;
-        }
-
-        void RefreshItemID()
-        {
-            for (int i = 0; i < mItemList.Count; i++)
-                mItemList[i].ID = i;
-        }
-
-        void AddScrollItem(RegistVocaScrollItemData info)
-        {
-            if (info == null)
-                return;
-
-            var itemInfo = GetOrNewItem();
-            if (itemInfo != null)
-            {
-                itemInfo.SetData(info);
-                itemInfo.Show(true, true, () => {
+                AddScrollItem(true, (ui) => {
+                    var itemUI = ui as ItemUIRegistVocaInfo;
+                    if (itemUI != null)
+                    {
+                        itemUI.transform.SetParent(_scrollList.content);
+                        itemUI.transform.SetAsFirstSibling();
+                        itemUI.SetData(it);
+                    }
                 });
-                mItemList.Add(itemInfo);
-
-                RefreshItemID();
             }
         }
-
-        void RemoveScrollItem(int id)
-        {
-            if (mItemList.Count > id)
-            {
-                var itemInfo = mItemList[id];
-                itemInfo.Show(false, true, () => {
-                    itemInfo.transform.SetParent(_trItemPool);
-                });
-
-                if (mItemList.Remove(itemInfo))
-                {
-                    mItemPool.Enqueue(itemInfo);
-                    RefreshItemID();
-                }
-            }
-        }
-
-        void RemoveAllScrollItem()
-        {
-            foreach (var itemInfo in mItemList)
-            {
-                if (itemInfo != null)
-                {
-                    itemInfo.Show(false, true, () => {
-                        itemInfo.transform.SetParent(_trItemPool);
-                    });
-                    mItemPool.Enqueue(itemInfo);
-                }
-            }
-            mItemList.Clear();
-        }
-        #endregion
+        #endregion        
 
         #region // [Func] Callback //
         void OnClickCloseButton()

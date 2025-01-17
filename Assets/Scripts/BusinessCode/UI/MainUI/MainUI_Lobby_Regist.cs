@@ -136,7 +136,7 @@ namespace Jenny
         {
             foreach (var it in mDataList)
             {
-                AddScrollItem((ui) =>
+                AddScrollItem(false, (ui) =>
                 {
                     var itemUI = ui as ItemUIRegistInfo;
                     if (itemUI != null)
@@ -193,7 +193,7 @@ namespace Jenny
 
             RegistScrollItemData data = new(en, kr);
             mDataList.Add(data);
-            AddScrollItem((ui) => {
+            AddScrollItem(false, (ui) => {
                 var itemUI = ui as ItemUIRegistInfo;
                 if (itemUI != null)
                 {
