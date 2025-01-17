@@ -2670,6 +2670,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cg: {fileID: 3160150524787258543}
   _btnTouchBg: {fileID: 4000859802277001153}
+  _scrollItemObject: {fileID: 8071866736441302445}
   _textTitle: {fileID: 4965241937752104342}
   _btnClose: {fileID: 7110472690699755838}
   _inputEn: {fileID: 7301303336115955680}

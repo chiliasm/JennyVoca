@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7382162173065065497}
   - component: {fileID: 4155679276389973436}
   m_Layer: 5
-  m_Name: ItemUI_RegistVoca_Info
+  m_Name: ItemUIRegistVocaInfo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

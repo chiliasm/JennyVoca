@@ -4,17 +4,17 @@ using UnityEngine;
 
 namespace Jenny
 {
-    public class ItemUIRegistVocaInfo : BaseScrollItem
+    public class ItemUIRegistVocaInfo : ItemUI
     {
         #region // [Var] Data //
-        string mName;
+        SubUI_RegistVoca.RegistVocaScrollItemData mInfo;
         #endregion
 
 
         #region // [Func] Set //
-        public void SetData(string name)
+        public void SetData(SubUI_RegistVoca.RegistVocaScrollItemData info)
         {
-            mName = name;
+            mInfo = info;
         }
         #endregion
     }

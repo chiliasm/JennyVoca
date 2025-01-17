@@ -2976,6 +2976,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cg: {fileID: 3160150524787258543}
   _btnTouchBg: {fileID: 4000859802277001153}
+  _scrollItemObject: {fileID: 6167080884505380311}
   _textKr: {fileID: 4064567824236997435}
   _inputEn: {fileID: 7988495969475766257}
   _btnConfirm: {fileID: 4685610636037632182}
@@ -4017,5 +4018,10 @@ PrefabInstance:
 --- !u!224 &4332460168642512813 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6065049725179710658, guid: 51929bc4380103e42ab0512b8d732fad, type: 3}
+  m_PrefabInstance: {fileID: 7508801330695998319}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6167080884505380311 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4440901510822760120, guid: 51929bc4380103e42ab0512b8d732fad, type: 3}
   m_PrefabInstance: {fileID: 7508801330695998319}
   m_PrefabAsset: {fileID: 0}

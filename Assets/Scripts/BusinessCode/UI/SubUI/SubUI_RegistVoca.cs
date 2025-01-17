@@ -8,6 +8,16 @@ namespace Jenny
 {
     public class SubUI_RegistVoca : SubUI
     {
+        public class RegistVocaScrollItemData : BaseScrollItemData
+        {
+            public string Name;
+
+            public RegistVocaScrollItemData(string name)
+            {
+                Name = name;
+            }
+        }
+
         #region // [Var] Unity //
         [SerializeField]
         Button _btnClose;
@@ -99,9 +109,9 @@ namespace Jenny
                 mItemList[i].ID = i;
         }
 
-        void AddScrollItem(string info)
+        void AddScrollItem(RegistVocaScrollItemData info)
         {
-            if (string.IsNullOrWhiteSpace(info))
+            if (info == null)
                 return;
 
             var itemInfo = GetOrNewItem();

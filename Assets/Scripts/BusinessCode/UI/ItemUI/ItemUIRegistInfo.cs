@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace Jenny
 {
-    public class ItemUIRegistInfo : BaseScrollItem
+    public class ItemUIRegistInfo : ItemUI
     {
         #region // [Var] Unity //
         [Header("== ItemRegistInfo ==")]
@@ -27,7 +27,7 @@ namespace Jenny
         #endregion
 
         #region // [Var] Data //
-        MainUI_Lobby_Regist.RegistInfo mInfo;
+        MainUI_Lobby_Regist.RegistScrollItemData mData;
         bool mIsSelected = false;
 
         System.Action<int> mSelectCallback;
@@ -60,9 +60,9 @@ namespace Jenny
         #endregion
 
         #region // [Func] Set //
-        public void SetData(MainUI_Lobby_Regist.RegistInfo info, System.Action<int> lpSelectCallback = null, System.Action<int> lpModifyCallback = null, System.Action<int> lpDeleteCallback = null)
+        public void SetData(MainUI_Lobby_Regist.RegistScrollItemData data, System.Action<int> lpSelectCallback = null, System.Action<int> lpModifyCallback = null, System.Action<int> lpDeleteCallback = null)
         {
-            mInfo = info;
+            mData = data;
             if (lpSelectCallback != null)
                 mSelectCallback = lpSelectCallback;
             if (lpModifyCallback != null)
@@ -85,8 +85,8 @@ namespace Jenny
         #region // [Func] UpdateUI //
         void UpdateUI()
         {
-            _textEn.text = mInfo.En;
-            _textKr.text = string.Format("({0})", mInfo.Kr);
+            _textEn.text = mData.En;
+            _textKr.text = string.Format("({0})", mData.Kr);
 
             UpdateUISelect();
         }

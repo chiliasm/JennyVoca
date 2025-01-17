@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace Jenny
 {
-    public class ItemUIExamInfo : BaseScrollItem
+    public class ItemUIExamInfo : ItemUI
     {
         #region // [Var] Unity //
         [Header("== ItemExamInfo ==")]
@@ -23,14 +23,14 @@ namespace Jenny
         #endregion
 
         #region // [Var] Data //
-        MainUI_Lobby_Exam.ExamInfo mInfo;
+        MainUI_Lobby_Exam.ExamScrollItemData mData;
         #endregion
 
 
         #region // [Func] Set //
-        public void SetData(MainUI_Lobby_Exam.ExamInfo info)
+        public void SetData(MainUI_Lobby_Exam.ExamScrollItemData data)
         {
-            mInfo = info;
+            mData = data;
 
             UpdateUI();
         }
@@ -39,12 +39,12 @@ namespace Jenny
         #region // [Func] UpdateUI //
         void UpdateUI()
         {
-            _textKr.text = string.Format("({0})", mInfo.Kr);
-            _textEn.text = mInfo.En;
+            _textKr.text = string.Format("({0})", mData.Kr);
+            _textEn.text = mData.En;
 
-            _goResult.SetActive(mInfo.IsResult);
-            _goOK.SetActive(mInfo.IsOK);
-            _goCancel.SetActive(!mInfo.IsOK);
+            _goResult.SetActive(mData.IsResult);
+            _goOK.SetActive(mData.IsOK);
+            _goCancel.SetActive(!mData.IsOK);
         }
         #endregion
     }

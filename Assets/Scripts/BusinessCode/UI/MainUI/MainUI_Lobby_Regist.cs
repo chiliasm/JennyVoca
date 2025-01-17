@@ -8,12 +8,12 @@ namespace Jenny
 {
     public class MainUI_Lobby_Regist : MainUI
     {
-        public class RegistInfo
+        public class RegistScrollItemData : BaseScrollItemData
         {
             public string En;
             public string Kr;
 
-            public RegistInfo(string en, string kr)
+            public RegistScrollItemData(string en, string kr)
             {
                 En = en;
                 Kr = kr;
@@ -48,11 +48,8 @@ namespace Jenny
         #endregion
 
         #region // [Var] Data //
-        readonly List<RegistInfo> mDataList = new();
-        int mModifyID = -1;
-
-        readonly List<ItemUIRegistInfo> mItemList = new();
-        readonly Queue<ItemUIRegistInfo> mItemPool = new();
+        readonly List<RegistScrollItemData> mDataList = new();
+        int mModifyID = -1;        
 
         Coroutine mCorUpdateUIItemList;
         #endregion
@@ -96,8 +93,13 @@ namespace Jenny
             _inputEn.text = string.Empty;
             _inputKr.text = string.Empty;
 
-            foreach (var it in mItemList)
-                it.SetSelect(false);
+            var itemList = GetScrollItemList();
+            foreach (var it in itemList)
+            {
+                var itemUI = it as ItemUIRegistInfo;
+                if (itemUI != null)
+                    itemUI.SetSelect(false);
+            }   
         }
 
         public override void Clear()
@@ -134,89 +136,21 @@ namespace Jenny
         {
             foreach (var it in mDataList)
             {
-                AddScrollItem(it);
+                AddScrollItem((ui) =>
+                {
+                    var itemUI = ui as ItemUIRegistInfo;
+                    if (itemUI != null)
+                    {
+                        itemUI.transform.SetParent(_scrollList.content);
+                        itemUI.transform.SetAsLastSibling();
+                        itemUI.SetData(it, OnSelectedCallback, OnModifyCallback, OnDeleteCallback);
+                    }   
+                });
                 yield return new WaitForSeconds(0.1f);
             }
             mCorUpdateUIItemList = null;
         }
-        #endregion
-
-        #region // [Func] Scroll //
-        ItemUIRegistInfo GetOrNewItem()
-        {
-            ItemUIRegistInfo info = null;
-            if (mItemPool.Count > 0)
-                info = mItemPool.Dequeue();
-            else
-            {
-                var o = GameObject.Instantiate(_itemObject);
-                o.SetActive(false);
-                if (o.TryGetComponent<ItemUIRegistInfo>(out var comp))
-                    info = comp;
-            }
-            if (info != null)
-            {
-                info.transform.SetParent(_scrollList.content);
-                info.transform.SetAsLastSibling();
-            }
-            return info;
-        }
-
-        void RefreshItemID()
-        {
-            for (int i = 0; i < mItemList.Count; i++)
-                mItemList[i].ID = i;
-        }
-
-        void AddScrollItem(RegistInfo info)
-        {
-            if (info == null)
-                return;
-            
-            var itemInfo = GetOrNewItem();
-            if (itemInfo != null)
-            {
-                itemInfo.SetData(info, OnSelectedCallback, OnModifyCallback, OnDeleteCallback);
-                itemInfo.Show(true, false, () => {
-                });
-                mItemList.Add(itemInfo);
-
-                RefreshItemID();
-            }
-        }
-
-        void RemoveScrollItem(int id)
-        {
-            if (mItemList.Count > id)
-            {
-                var itemInfo = mItemList[id];
-                itemInfo.Show(false, false, () => {
-                    itemInfo.transform.SetParent(_trItemPool);
-                });
-
-                if (mItemList.Remove(itemInfo))
-                {
-                    mItemPool.Enqueue(itemInfo);
-                    RefreshItemID();
-                }   
-            }
-        }
-
-        void RemoveAllScrollItem()
-        {
-            foreach (var itemInfo in mItemList)
-            {
-                if (itemInfo != null)
-                {
-                    itemInfo.Show(false, true, () => {
-                        itemInfo.transform.SetParent(_trItemPool);                        
-                    });
-                    mItemPool.Enqueue(itemInfo);
-                }
-            }
-            mItemList.Clear();
-        }
-        #endregion
+        #endregion        
 
         #region // [Func] Callback //
         void OnClickCloseButton()
@@ -257,9 +191,17 @@ namespace Jenny
                 }                    
             }
 
-            RegistInfo info = new(en, kr);
-            mDataList.Add(info);
-            AddScrollItem(info);
+            RegistScrollItemData data = new(en, kr);
+            mDataList.Add(data);
+            AddScrollItem((ui) => {
+                var itemUI = ui as ItemUIRegistInfo;
+                if (itemUI != null)
+                {
+                    itemUI.transform.SetParent(_scrollList.content);
+                    itemUI.transform.SetAsLastSibling();
+                    itemUI.SetData(data, OnSelectedCallback, OnModifyCallback, OnDeleteCallback);
+                }   
+            });
 
             InitUI();
         }
@@ -277,8 +219,9 @@ namespace Jenny
                 info.En = _inputEn.text;
                 info.Kr = _inputKr.text;
 
-                if (mItemList.Count > mModifyID)
-                    mItemList[mModifyID].SetData(info);
+                var itemUI = GetScrollItemUI(mModifyID) as ItemUIRegistInfo;
+                if (itemUI != null)
+                    itemUI.SetData(info);
 
                 InitUI();
             }
@@ -286,11 +229,16 @@ namespace Jenny
 
         void OnSelectedCallback(int id = -1)
         {
-            if (mItemList.Count <= id)
-                return;
-            
-            foreach (var it in mItemList)
-                it.SetSelect(it.ID.Equals(id));
+            var list = GetScrollItemList();
+            if (list != null && list.Count > id)
+            {
+                foreach (var it in list)
+                {
+                    var itemUI = it as ItemUIRegistInfo;
+                    if (itemUI != null)
+                        itemUI.SetSelect(itemUI.ID.Equals(id));
+                }
+            }
         }
 
         void OnModifyCallback(int id = -1)
