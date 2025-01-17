@@ -319,7 +319,7 @@ GameObject:
   - component: {fileID: 6065049725179710658}
   - component: {fileID: 5055484972730244885}
   m_Layer: 5
-  m_Name: Item_Regist_Info
+  m_Name: ItemUI_Regist_Info
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

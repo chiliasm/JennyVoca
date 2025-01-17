@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace Jenny
 {
-    public class ItemRegistInfo : BaseItemInfo
+    public class ItemUIRegistInfo : BaseScrollItem
     {
         #region // [Var] Unity //
         [Header("== ItemRegistInfo ==")]

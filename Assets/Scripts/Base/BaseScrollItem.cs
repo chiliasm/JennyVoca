@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Jenny
 {
-    public class BaseItemInfo : BaseMonoBehaviour
+    public class BaseScrollItem : BaseMonoBehaviour
     {
         #region // [Var] Unity //
         [Header("== BaseItemInfo ==")]

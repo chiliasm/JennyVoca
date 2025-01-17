@@ -17,6 +17,7 @@ namespace Jenny
     {
         None = -1,
 
+        SubUI_RegistVoca,
         SubUI_AppSetting,
 
         Last,

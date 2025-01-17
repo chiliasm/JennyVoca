@@ -51,8 +51,8 @@ namespace Jenny
         readonly List<RegistInfo> mDataList = new();
         int mModifyID = -1;
 
-        readonly List<ItemRegistInfo> mItemList = new();
-        readonly Queue<ItemRegistInfo> mItemPool = new();
+        readonly List<ItemUIRegistInfo> mItemList = new();
+        readonly Queue<ItemUIRegistInfo> mItemPool = new();
 
         Coroutine mCorUpdateUIItemList;
         #endregion
@@ -142,16 +142,16 @@ namespace Jenny
         #endregion
 
         #region // [Func] Scroll //
-        ItemRegistInfo GetOrNewItem()
+        ItemUIRegistInfo GetOrNewItem()
         {
-            ItemRegistInfo info = null;
+            ItemUIRegistInfo info = null;
             if (mItemPool.Count > 0)
                 info = mItemPool.Dequeue();
             else
             {
                 var o = GameObject.Instantiate(_itemObject);
                 o.SetActive(false);
-                if (o.TryGetComponent<ItemRegistInfo>(out var comp))
+                if (o.TryGetComponent<ItemUIRegistInfo>(out var comp))
                     info = comp;
             }
             if (info != null)
