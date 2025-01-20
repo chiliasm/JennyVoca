@@ -54,7 +54,19 @@ namespace Jenny
         {
             SoundManager.Instance.Play(E_Sound_Item.Sfx_Click_Bubble);
 
-            UIManager.Instance.OpenUI(E_MainUI.MainUI_Lobby_Regist);
+            var registVocaUI = UIManager.Instance.OpenUI(E_SubUI.SubUI_RegistVoca) as SubUI_RegistVoca;
+            if (registVocaUI != null)
+            {
+                registVocaUI.SetData((orderName) => 
+                {
+                    var registUI = UIManager.Instance.OpenUI(E_MainUI.MainUI_Lobby_Regist) as MainUI_Lobby_Regist;
+                    if (registUI != null)
+                    {
+                        DataManager.Instance.AddVocaData(new(orderName));
+                        registUI.SetData(orderName);
+                    }   
+                });
+            }
         }
 
         void OnClickExamButton()

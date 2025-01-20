@@ -84,6 +84,19 @@ namespace Jenny
             mVocaContainer.DataList.RemoveAt(removeIdx);
             return true;
         }
+
+        public List<VocaInfo> GetVocaInfoList(string orderName)
+        {
+            if (mVocaContainer == null || string.IsNullOrWhiteSpace(orderName))
+                return null;
+
+            foreach (var it in mVocaContainer.DataList)
+            {
+                if (it.OrderName == orderName)
+                    return it.InfoList;
+            }
+            return null;
+        }
         #endregion
 
         #region // [Func] Load, Save //

@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -35,11 +37,9 @@ namespace Jenny
         #endregion
 
         #region // [Var] Data //
-        string mRegistName;
         readonly List<RegistVocaScrollItemData> mDataList = new();
 
-        readonly List<ItemUIRegistVocaInfo> mItemList = new();
-        readonly Queue<ItemUIRegistVocaInfo> mItemPool = new();
+        System.Action<string> mConfirmCallback;
         #endregion
 
 
@@ -78,7 +78,7 @@ namespace Jenny
             _inputName.text = string.Empty;
         }
 
-        public void SetData()
+        public void SetData(System.Action<string> lpConfirmCallback = null)
         {
             InitUI();
 
@@ -89,6 +89,7 @@ namespace Jenny
                 foreach (var it in container.DataList)
                     mDataList.Add(new(it.OrderName, it.InfoList.Count));
             }
+            mConfirmCallback = lpConfirmCallback;
 
             UpdateUI();
         }
@@ -97,7 +98,17 @@ namespace Jenny
         #region // [Func] UpdateUI //
         void UpdateUI()
         {
+            UpdateUIName();
             UpdateUIScroll();
+        }
+
+        void UpdateUIName()
+        {
+            var orderName = _inputName.text;
+            if (string.IsNullOrWhiteSpace(orderName))
+                orderName = MakeOrderName();
+
+            _inputName.text = orderName;
         }
 
         void UpdateUIScroll()
@@ -117,17 +128,81 @@ namespace Jenny
                 });
             }
         }
-        #endregion        
+        #endregion
+
+        #region // [Func] Util //
+        string MakeOrderName()
+        {
+            var dateName = string.Format("{0}-{1}-{2}", DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
+            var orderName = dateName;
+            int retryCount = 0;
+            while (true)
+            {
+                if (IsValidOrderName(orderName))
+                    break;
+                else
+                    orderName = string.Format("{0} ({1})", dateName, retryCount);
+                
+                retryCount++;
+                if (retryCount > 10)
+                {
+                    orderName = MakeOrderNameRandom(dateName);
+                    break;
+                }
+            }
+            return orderName;
+        }
+
+        string MakeOrderNameRandom(string baseName)
+        {
+            return string.Format("{0} ({1})", baseName, DateTime.Now.Ticks);
+        }
+
+        bool IsValidOrderName(string orderName)
+        {
+            if (string.IsNullOrWhiteSpace(orderName))
+                return false;
+
+            var isValid = true;
+            var container = DataManager.Instance.GetVocaContainer();
+            if (container != null)
+            {
+                foreach (var it in container.DataList)
+                {
+                    if (orderName == it.OrderName)
+                    {
+                        isValid = false;
+                        break;
+                    }   
+                }
+            }
+            else
+            {
+                isValid = false;
+            }
+            return isValid;
+        }
+        #endregion
 
         #region // [Func] Callback //
         void OnClickCloseButton()
         {
+            SoundManager.Instance.Play(E_Sound_Item.Sfx_Click_Bubble);
 
+            CloseUI();
         }
 
         void OnClickConfirmButton()
         {
+            SoundManager.Instance.Play(E_Sound_Item.Sfx_Click_Bubble);
 
+            var orderName = _inputName.text;
+            if (IsValidOrderName(orderName) == false)
+                orderName = MakeOrderNameRandom(orderName);
+
+            mConfirmCallback?.Invoke(orderName);
+
+            CloseUI();
         }
         #endregion
     }

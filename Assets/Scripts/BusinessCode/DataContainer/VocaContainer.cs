@@ -15,6 +15,11 @@ namespace Jenny
     {
         public string OrderName;
         public List<VocaInfo> InfoList = new();
+
+        public VocaData(string orderName)
+        {
+            OrderName = orderName;
+        }
     }
 
     [System.Serializable]
@@ -22,5 +27,11 @@ namespace Jenny
     {
         public string En;
         public string Kr;
+
+        public VocaInfo(string en, string kr)
+        {
+            En = en;
+            Kr = kr;
+        }
     }
 }

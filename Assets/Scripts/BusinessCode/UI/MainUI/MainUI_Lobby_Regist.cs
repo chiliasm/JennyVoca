@@ -48,6 +48,7 @@ namespace Jenny
         #endregion
 
         #region // [Var] Data //
+        string mOrderName;
         readonly List<RegistScrollItemData> mDataList = new();
         int mModifyID = -1;        
 
@@ -106,6 +107,23 @@ namespace Jenny
         {
             mDataList.Clear();
             RemoveAllScrollItem();
+        }
+        #endregion
+
+        #region // [Func] SetData //
+        public void SetData(string orderName)
+        {
+            mOrderName = orderName;
+
+            mDataList.Clear();
+            var list = DataManager.Instance.GetVocaInfoList(orderName);
+            if (list != null)
+            {
+                foreach (var it in list)
+                    mDataList.Add(new(it.En, it.Kr));
+            }
+
+            UpdateUI();
         }
         #endregion
 
