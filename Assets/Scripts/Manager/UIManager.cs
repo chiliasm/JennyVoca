@@ -27,18 +27,6 @@ namespace Jenny
         protected override void OnDisable()
         {
             base.OnDisable();
-
-            foreach (var it in mMainUIDic)
-                Destroy(it.Value.gameObject);
-            mMainUIDic.Clear();
-
-            foreach (var it in mSubUIDic)
-                Destroy(it.Value.gameObject);
-            mSubUIDic.Clear();
-
-            foreach (var it in mMsgUIDic)
-                Destroy(it.Value.gameObject);
-            mMsgUIDic.Clear();
         }
         #endregion
 
