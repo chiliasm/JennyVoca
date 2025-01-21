@@ -9,6 +9,7 @@ namespace Jenny
     public class ItemUISelectOrderInfo : ItemUI
     {
         #region // [Var] Unity //
+        [Header("== SelectOrderInfo ==")]
         [SerializeField]
         TMP_Text _textName;
         [SerializeField]
@@ -21,7 +22,7 @@ namespace Jenny
         SubUI_SelectOrder.SelectOrderScrollItemData mInfo;
         bool mIsSelect = false;
 
-        System.Action<string> mSelectCallback;
+        System.Action<int> mSelectCallback;
 
         readonly Color COLOR_BG_DEFAULT = new(0.96f, 0.85f, 0.59f, 1f);
         readonly Color COLOR_BG_SELECT = new(0.85f, 0.85f, 0.85f, 1f);
@@ -45,7 +46,7 @@ namespace Jenny
         #endregion
 
         #region // [Func] Set //
-        public void SetData(SubUI_SelectOrder.SelectOrderScrollItemData info, System.Action<string> lpSelectCallback = null)
+        public void SetData(SubUI_SelectOrder.SelectOrderScrollItemData info, System.Action<int> lpSelectCallback = null)
         {
             mInfo = info;
             if (lpSelectCallback != null)
@@ -81,7 +82,7 @@ namespace Jenny
         {
             CommonFunc.PlayClickSound();
 
-            mSelectCallback?.Invoke(mInfo.Name);
+            mSelectCallback?.Invoke(ID);
         }
         #endregion
     }

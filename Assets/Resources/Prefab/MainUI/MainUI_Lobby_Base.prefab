@@ -870,6 +870,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cg: {fileID: 3160150524787258543}
   _btnTouchBg: {fileID: 4000859802277001153}
+  _scrollItemObject: {fileID: 0}
   _btnRegist: {fileID: 3330413515033377953}
   _btnExam: {fileID: 694911750713901900}
   _btnQuit: {fileID: 1453114744259879873}
@@ -972,7 +973,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3032095887014027378, guid: 97c7e871fa6a9b4438312b7ec48746c0, type: 3}
       propertyPath: m_text
-      value: "\uC2DC\uD5D8\uBCF4\uAE30"
+      value: Exam
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1238,7 +1239,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3032095887014027378, guid: 97c7e871fa6a9b4438312b7ec48746c0, type: 3}
       propertyPath: m_text
-      value: "\uB4F1\uB85D\uD558\uAE30"
+      value: Regist
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

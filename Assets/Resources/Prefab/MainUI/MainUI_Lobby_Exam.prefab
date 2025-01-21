@@ -1080,7 +1080,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC601\uC5B4 \uB2E8\uC5B4\uB97C \uC785\uB825\uD574\uC8FC\uC138\uC694."
+  m_text: Please enter an English word.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 36533cdbad406be49ae234be16ac904c, type: 2}
   m_sharedMaterial: {fileID: 810013663886556418, guid: 36533cdbad406be49ae234be16ac904c, type: 2}
@@ -1595,7 +1595,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uB2F5\uBCC0"
+  m_text: EN
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 36533cdbad406be49ae234be16ac904c, type: 2}
   m_sharedMaterial: {fileID: 810013663886556418, guid: 36533cdbad406be49ae234be16ac904c, type: 2}
@@ -2502,7 +2502,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uBB38\uC81C\uC785\uB2C8\uB2E4"
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 36533cdbad406be49ae234be16ac904c, type: 2}
   m_sharedMaterial: {fileID: 810013663886556418, guid: 36533cdbad406be49ae234be16ac904c, type: 2}
@@ -2977,6 +2977,7 @@ MonoBehaviour:
   _cg: {fileID: 3160150524787258543}
   _btnTouchBg: {fileID: 4000859802277001153}
   _scrollItemObject: {fileID: 6167080884505380311}
+  _textOrder: {fileID: 4965241937752104342}
   _textKr: {fileID: 4064567824236997435}
   _inputEn: {fileID: 7988495969475766257}
   _btnConfirm: {fileID: 4685610636037632182}
@@ -3052,7 +3053,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uBB38\uC81C"
+  m_text: KR
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 36533cdbad406be49ae234be16ac904c, type: 2}
   m_sharedMaterial: {fileID: 810013663886556418, guid: 36533cdbad406be49ae234be16ac904c, type: 2}
@@ -3392,7 +3393,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 119629642653522993, guid: 97c7e871fa6a9b4438312b7ec48746c0, type: 3}
       propertyPath: m_Name
-      value: btn_confirm
+      value: btn_submit
       objectReference: {fileID: 0}
     - target: {fileID: 119629642653522993, guid: 97c7e871fa6a9b4438312b7ec48746c0, type: 3}
       propertyPath: m_IsActive
@@ -3496,15 +3497,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3032095887014027378, guid: 97c7e871fa6a9b4438312b7ec48746c0, type: 3}
       propertyPath: m_text
-      value: "\uD655\uC778"
+      value: Submit
       objectReference: {fileID: 0}
     - target: {fileID: 3032095887014027378, guid: 97c7e871fa6a9b4438312b7ec48746c0, type: 3}
       propertyPath: m_fontSize
-      value: 50
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 3032095887014027378, guid: 97c7e871fa6a9b4438312b7ec48746c0, type: 3}
       propertyPath: m_fontSizeBase
-      value: 50
+      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3774,7 +3775,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3032095887014027378, guid: 97c7e871fa6a9b4438312b7ec48746c0, type: 3}
       propertyPath: m_text
-      value: "\uC2DC\uC791\uD558\uAE30"
+      value: Start
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3807,7 +3808,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 119629642653522993, guid: 97c7e871fa6a9b4438312b7ec48746c0, type: 3}
       propertyPath: m_Name
-      value: btn_finish
+      value: btn_marking
       objectReference: {fileID: 0}
     - target: {fileID: 893258342015612107, guid: 97c7e871fa6a9b4438312b7ec48746c0, type: 3}
       propertyPath: m_Pivot.x
@@ -3891,7 +3892,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3032095887014027378, guid: 97c7e871fa6a9b4438312b7ec48746c0, type: 3}
       propertyPath: m_text
-      value: "\uCCB4\uD06C\uD558\uAE30"
+      value: Marking
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3928,7 +3929,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4440901510822760120, guid: 51929bc4380103e42ab0512b8d732fad, type: 3}
       propertyPath: m_Name
-      value: Item_Exam_Info
+      value: ItemUIExamInfo
       objectReference: {fileID: 0}
     - target: {fileID: 6065049725179710658, guid: 51929bc4380103e42ab0512b8d732fad, type: 3}
       propertyPath: m_Pivot.x

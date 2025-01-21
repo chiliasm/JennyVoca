@@ -9,21 +9,25 @@ namespace Jenny
     public class ItemUIExamInfo : ItemUI
     {
         #region // [Var] Unity //
-        [Header("== ItemExamInfo ==")]
+        [Header("== ExamInfo ==")]
         [SerializeField]
         TMP_Text _textKr;
+        [SerializeField]
+        TMP_Text _textInput;
         [SerializeField]
         TMP_Text _textEn;
         [SerializeField]
         GameObject _goResult;
         [SerializeField]
-        GameObject _goOK;
+        GameObject _goPass;
         [SerializeField]
-        GameObject _goCancel;
+        GameObject _goFail;
         #endregion
 
         #region // [Var] Data //
         MainUI_Lobby_Exam.ExamScrollItemData mData;
+
+        bool mIsShowResult = false;
         #endregion
 
 
@@ -31,6 +35,16 @@ namespace Jenny
         public void SetData(MainUI_Lobby_Exam.ExamScrollItemData data)
         {
             mData = data;
+            mIsShowResult = false;
+
+            UpdateUI();
+        }
+        #endregion
+
+        #region // [Func] Show //
+        public void ShowResult(bool isShow)
+        {
+            mIsShowResult = isShow;
 
             UpdateUI();
         }
@@ -39,12 +53,14 @@ namespace Jenny
         #region // [Func] UpdateUI //
         void UpdateUI()
         {
-            _textKr.text = string.Format("({0})", mData.Kr);
-            _textEn.text = mData.En;
+            _textKr.text = string.Format("{0}", mData.Kr);
+            _textInput.text = mData.Input;
+            _textEn.text = string.Format("=> ({0})", mData.En);
 
-            _goResult.SetActive(mData.IsResult);
-            _goOK.SetActive(mData.IsOK);
-            _goCancel.SetActive(!mData.IsOK);
+            _goResult.SetActive(mIsShowResult);
+            _goPass.SetActive(mData.IsPass);
+            _goFail.SetActive(!mData.IsPass);
+            _textEn.gameObject.SetActive(mIsShowResult && !mData.IsPass);
         }
         #endregion
     }

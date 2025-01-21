@@ -9,7 +9,7 @@ namespace Jenny
     public class ItemUIRegistOrderInfo : ItemUI
     {
         #region // [Var] Unity //
-        [Header("== RegistVocaInfo ==")]
+        [Header("== RegistOrderInfo ==")]
         [SerializeField]
         TMP_Text _textInfo;
         [SerializeField]

@@ -27,23 +27,6 @@ namespace Jenny
         protected override void OnDisable()
         {
             base.OnDisable();
-        }
-        #endregion
-
-        #region // [Func] Init //
-        public override void OnCreateSingleton()
-        {
-            base.OnCreateSingleton();
-        }
-
-        public void InitUIController(UIController controller)
-        {
-            mUIController = controller;
-        }
-
-        public override void Clear()
-        {
-            base.Clear();
 
             foreach (var it in mMainUIDic)
                 Destroy(it.Value.gameObject);
@@ -56,6 +39,18 @@ namespace Jenny
             foreach (var it in mMsgUIDic)
                 Destroy(it.Value.gameObject);
             mMsgUIDic.Clear();
+        }
+        #endregion
+
+        #region // [Func] Init //
+        public override void OnCreateSingleton()
+        {
+            base.OnCreateSingleton();
+        }
+
+        public void InitUIController(UIController controller)
+        {
+            mUIController = controller;
         }
         #endregion
 

@@ -9,7 +9,7 @@ namespace Jenny
     public class ItemUIRegistInfo : ItemUI
     {
         #region // [Var] Unity //
-        [Header("== ItemRegistInfo ==")]
+        [Header("== RegistInfo ==")]
         [SerializeField]
         Button _btnBg;
         [SerializeField]

@@ -14,13 +14,6 @@ namespace Jenny
         protected override void OnDisable()
         {
             base.OnDisable();
-        }
-        #endregion
-
-        #region // [Func] Clear //
-        public override void Clear()
-        {
-            base.Clear();
 
             UnloadAll();
         }

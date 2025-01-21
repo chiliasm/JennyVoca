@@ -6,7 +6,7 @@ namespace Jenny
     public class MainUI_Intro_Base : MainUI
     {
         #region // [Var] Unity //
-        [Header("== MainUI ==")]
+        [Header("== IntroBase ==")]
         [SerializeField]
         Button _btnQuit;
         [SerializeField]
@@ -28,13 +28,6 @@ namespace Jenny
 
             _btnQuit.onClick.RemoveListener(OnClickQuitButton);
             _btnStart.onClick.RemoveListener(OnClickStartButton);
-        }
-        #endregion
-
-        #region // [Func] Init //
-        protected override void InitUI()
-        {
-            base.InitUI();
         }
         #endregion
 

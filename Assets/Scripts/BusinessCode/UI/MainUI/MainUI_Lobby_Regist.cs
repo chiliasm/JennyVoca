@@ -21,7 +21,7 @@ namespace Jenny
         }
 
         #region // [Var] Unity //
-        [Header("== MainUI Regist ==")]
+        [Header("== LobbyRegist ==")]
         [SerializeField]
         TMP_Text _textTitle;
         [SerializeField]
@@ -49,7 +49,7 @@ namespace Jenny
 
         #region // [Var] Data //
         string mOrderName;
-        readonly List<RegistScrollItemData> mDataList = new();
+        readonly List<RegistScrollItemData> mItemList = new();
         int mModifyID = -1;        
 
         Coroutine mCorUpdateUIItemList;
@@ -75,8 +75,6 @@ namespace Jenny
             _btnModify.onClick.RemoveListener(OnClickModifyButton);
             _btnClose.onClick.RemoveListener(OnClickCloseButton);
             _btnRegist.onClick.RemoveListener(OnClickRegistButton);
-
-            Clear();
         }
 
         protected override void Update()
@@ -86,10 +84,8 @@ namespace Jenny
         #endregion
         
         #region // [Func] Init //
-        protected override void InitUI()
+        void InitUI()
         {
-            base.InitUI();
-
             mModifyID = -1;
             _inputEn.text = string.Empty;
             _inputKr.text = string.Empty;
@@ -102,12 +98,6 @@ namespace Jenny
                     itemUI.SetSelect(false);
             }   
         }
-
-        public override void Clear()
-        {
-            mDataList.Clear();
-            RemoveAllScrollItem();
-        }
         #endregion
 
         #region // [Func] SetData //
@@ -115,12 +105,12 @@ namespace Jenny
         {
             mOrderName = orderName;
 
-            mDataList.Clear();
+            mItemList.Clear();
             var list = DataManager.Instance.GetVocaInfoList(orderName);
             if (list != null)
             {
                 foreach (var it in list)
-                    mDataList.Add(new(it.En, it.Kr));
+                    mItemList.Add(new(it.En, it.Kr));
             }
 
             UpdateUI();
@@ -158,7 +148,7 @@ namespace Jenny
 
         IEnumerator CorUpdateUIItemList()
         {
-            foreach (var it in mDataList)
+            foreach (var it in mItemList)
             {
                 AddScrollItem(false, (ui) =>
                 {
@@ -188,10 +178,10 @@ namespace Jenny
         {
             CommonFunc.PlayClickSound();
 
-            if (mDataList.Count > 0)
+            if (mItemList.Count > 0)
             {
                 VocaOrder order = new(mOrderName);
-                foreach (var it in mDataList)
+                foreach (var it in mItemList)
                     order.InfoList.Add(new(it.En, it.Kr));
 
                 DataManager.Instance.AddVocaOrder(order);
@@ -218,7 +208,7 @@ namespace Jenny
                 return;
             }
                 
-            foreach (var it in mDataList)
+            foreach (var it in mItemList)
             {
                 if (en.Equals(it.En))
                 {
@@ -228,7 +218,7 @@ namespace Jenny
             }
 
             RegistScrollItemData data = new(en, kr);
-            mDataList.Add(data);
+            mItemList.Add(data);
             AddScrollItem(false, (ui) => {
                 var itemUI = ui as ItemUIRegistInfo;
                 if (itemUI != null)
@@ -246,10 +236,10 @@ namespace Jenny
         {
             CommonFunc.PlayClickSound();
 
-            if (mDataList.Count <= mModifyID || mModifyID < 0 )
+            if (mItemList.Count <= mModifyID || mModifyID < 0 )
                 return;
 
-            var info = mDataList[mModifyID];
+            var info = mItemList[mModifyID];
             if (info != null)
             {
                 info.En = _inputEn.text;
@@ -279,10 +269,10 @@ namespace Jenny
 
         void OnModifyCallback(int id = -1)
         {
-            if (mDataList.Count <= id || id < 0)
+            if (mItemList.Count <= id || id < 0)
                 return;
 
-            var info = mDataList[id];
+            var info = mItemList[id];
             if (info != null)
             {
                 _inputEn.text = info.En;
@@ -295,10 +285,10 @@ namespace Jenny
 
         void OnDeleteCallback(int id = -1)
         {
-            if (mDataList.Count <= id || id < 0)
+            if (mItemList.Count <= id || id < 0)
                 return;
 
-            mDataList.RemoveAt(id);
+            mItemList.RemoveAt(id);
             RemoveScrollItem(id);
 
             InitUI();

@@ -29,12 +29,7 @@ namespace Jenny
         }
         #endregion
 
-        #region // [Func] Init //
-        protected override void InitUI()
-        {
-            base.InitUI();
-        }
-
+        #region // [Func] Set //
         public void SetType(E_MsgUI type)
         {
             mMsgUIType = type;

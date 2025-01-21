@@ -724,6 +724,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cg: {fileID: 3160150524787258543}
   _btnTouchBg: {fileID: 4000859802277001153}
+  _scrollItemObject: {fileID: 0}
   _btnQuit: {fileID: 8754248285425508356}
   _btnStart: {fileID: 9049130765899518509}
 --- !u!1001 &3529892956918164976
@@ -817,6 +818,10 @@ PrefabInstance:
     - target: {fileID: 893258342015612107, guid: 97c7e871fa6a9b4438312b7ec48746c0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3032095887014027378, guid: 97c7e871fa6a9b4438312b7ec48746c0, type: 3}
+      propertyPath: m_text
+      value: Quit
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -933,7 +938,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3032095887014027378, guid: 97c7e871fa6a9b4438312b7ec48746c0, type: 3}
       propertyPath: m_text
-      value: "\uC2DC\uC791"
+      value: Start
       objectReference: {fileID: 0}
     - target: {fileID: 3462707124979033609, guid: 97c7e871fa6a9b4438312b7ec48746c0, type: 3}
       propertyPath: m_Name

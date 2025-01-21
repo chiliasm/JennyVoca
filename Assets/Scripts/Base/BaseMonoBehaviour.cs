@@ -43,10 +43,6 @@ namespace Jenny
         public virtual void OnCreateSingleton() { }
         #endregion
 
-        #region // [Func] Clear //
-        public virtual void Clear() { }
-        #endregion
-
         #region // [Func] Util //
         protected bool ClearCoroutine(ref Coroutine c)
         {

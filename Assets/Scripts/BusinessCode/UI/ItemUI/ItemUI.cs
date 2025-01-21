@@ -7,7 +7,7 @@ namespace Jenny
     public class ItemUI : BaseMonoBehaviour
     {
         #region // [Var] Unity //
-        [Header("== BaseItemInfo ==")]
+        [Header("== ItemUI ==")]
         [SerializeField]
         protected CanvasGroup _canvas;
         #endregion

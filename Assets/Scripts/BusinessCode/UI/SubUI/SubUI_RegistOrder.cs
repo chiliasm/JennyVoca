@@ -24,7 +24,7 @@ namespace Jenny
         }
 
         #region // [Var] Unity //
-        [Header("== RegistVoca ==")]
+        [Header("== RegistOrder ==")]
         [SerializeField]
         Button _btnClose;
         [SerializeField]
@@ -38,7 +38,7 @@ namespace Jenny
         #endregion
 
         #region // [Var] Data //
-        readonly List<RegistOrderScrollItemData> mDataList = new();
+        readonly List<RegistOrderScrollItemData> mItemList = new();
 
         System.Action<string> mConfirmCallback;
         #endregion
@@ -59,23 +59,12 @@ namespace Jenny
 
             _btnClose.onClick.RemoveListener(OnClickCloseButton);
             _btnConfirm.onClick.RemoveListener(OnClickConfirmButton);
-
-            Clear();
         }
         #endregion
 
         #region // [Func] Init //
-        public override void Clear()
+        void InitUI()
         {
-            base.Clear();
-
-            RemoveAllScrollItem();
-        }
-
-        protected override void InitUI()
-        {
-            base.InitUI();
-
             _inputName.text = string.Empty;
         }
 
@@ -83,24 +72,18 @@ namespace Jenny
         {
             InitUI();
 
-            mDataList.Clear();
+            mItemList.Clear();
+
             var container = DataManager.Instance.GetVocaContainer();
             if (container != null)
             {
                 foreach (var it in container.DataList)
-                    mDataList.Add(new(it.OrderName, it.InfoList.Count));
+                    mItemList.Add(new(it.OrderName, it.InfoList.Count));
             }
             if (lpConfirmCallback != null)
                 mConfirmCallback = lpConfirmCallback;
 
             UpdateUI();
-        }
-        #endregion
-
-        #region // [Func] CloseUI //
-        public override void CloseUI()
-        {
-            base.CloseUI();
         }
         #endregion
 
@@ -124,7 +107,7 @@ namespace Jenny
         {
             RemoveAllScrollItem();
 
-            foreach (var it in mDataList)
+            foreach (var it in mItemList)
             {
                 AddScrollItem(true, (ui) => {
                     var itemUI = ui as ItemUIRegistOrderInfo;

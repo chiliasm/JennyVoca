@@ -42,13 +42,6 @@ namespace Jenny
         }
         #endregion
 
-        #region // [Func] Init //
-        protected override void InitUI()
-        {
-            base.InitUI();
-        }
-        #endregion
-
         #region // [Func] Callback //
         void OnClickRegistButton()
         {

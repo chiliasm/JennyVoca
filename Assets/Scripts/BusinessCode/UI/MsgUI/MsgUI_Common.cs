@@ -9,7 +9,7 @@ namespace Jenny
     public class MsgUI_Common : MsgUI
     {
         #region // [Var] Unity //
-        [Header("== MsgUI Common ==")]
+        [Header("== Common ==")]
         [SerializeField]
         Button _btnClose;
         [SerializeField]
@@ -41,12 +41,7 @@ namespace Jenny
         }
         #endregion
 
-        #region // [Func] Init //
-        protected override void InitUI()
-        {
-            base.InitUI();
-        }
-
+        #region // [Func] Set //
         public void SetData(string msg)
         {
             _textMsg.text = msg;

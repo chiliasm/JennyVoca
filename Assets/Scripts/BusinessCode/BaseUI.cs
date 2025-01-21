@@ -32,17 +32,6 @@ namespace Jenny
         protected override void OnDisable()
         {
             base.OnDisable();
-        }
-        #endregion
-
-        #region // [Func] Init //
-        protected virtual void InitUI()
-        {
-        }
-
-        public override void Clear()
-        {
-            base.Clear();
 
             RemoveAllScrollItem();
         }
