@@ -130,8 +130,14 @@ namespace Jenny
         #region // [Func] UpdateUI //
         void UpdateUI()
         {
+            UpdateUITitle();
             UpdateUIButton();
             UpdateUIItemList();
+        }
+
+        void UpdateUITitle()
+        {
+            _textTitle.text = mOrderName;
         }
 
         void UpdateUIButton()
@@ -173,19 +179,31 @@ namespace Jenny
         #region // [Func] Callback //
         void OnClickCloseButton()
         {
-            SoundManager.Instance.Play(E_Sound_Item.Sfx_Click_Bubble);
+            CommonFunc.PlayClickSound();
 
             CloseUI();
         }
 
         void OnClickRegistButton()
         {
-            SoundManager.Instance.Play(E_Sound_Item.Sfx_Click_Bubble);
+            CommonFunc.PlayClickSound();
+
+            if (mDataList.Count > 0)
+            {
+                VocaOrder order = new(mOrderName);
+                foreach (var it in mDataList)
+                    order.InfoList.Add(new(it.En, it.Kr));
+
+                DataManager.Instance.AddVocaOrder(order);
+                DataManager.Instance.SaveVocaData();
+            }
+
+            CloseUI();
         }
 
         void OnClickAddButton()
         {
-            SoundManager.Instance.Play(E_Sound_Item.Sfx_Click_Bubble);
+            CommonFunc.PlayClickSound();
 
             var en = _inputEn.text;
             var kr = _inputKr.text;
@@ -226,7 +244,7 @@ namespace Jenny
 
         void OnClickModifyButton()
         {
-            SoundManager.Instance.Play(E_Sound_Item.Sfx_Click_Bubble);
+            CommonFunc.PlayClickSound();
 
             if (mDataList.Count <= mModifyID || mModifyID < 0 )
                 return;

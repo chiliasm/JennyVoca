@@ -52,40 +52,37 @@ namespace Jenny
         #region // [Func] Callback //
         void OnClickRegistButton()
         {
-            SoundManager.Instance.Play(E_Sound_Item.Sfx_Click_Bubble);
+            CommonFunc.PlayClickSound();
 
-            var registVocaUI = UIManager.Instance.OpenUI(E_SubUI.SubUI_RegistVoca) as SubUI_RegistVoca;
-            if (registVocaUI != null)
-            {
-                registVocaUI.SetData((orderName) => 
-                {
-                    var registUI = UIManager.Instance.OpenUI(E_MainUI.MainUI_Lobby_Regist) as MainUI_Lobby_Regist;
-                    if (registUI != null)
-                    {
-                        DataManager.Instance.AddVocaData(new(orderName));
-                        registUI.SetData(orderName);
-                    }   
-                });
-            }
+            var registOrderUI = UIManager.Instance.OpenUI(E_SubUI.SubUI_RegistOrder) as SubUI_RegistOrder;
+            if (registOrderUI != null)
+                registOrderUI.SetData(CallbackConfirmItem);
         }
 
         void OnClickExamButton()
         {
-            SoundManager.Instance.Play(E_Sound_Item.Sfx_Click_Bubble);
+            CommonFunc.PlayClickSound();
         }
 
         void OnClickQuitButton()
         {
-            SoundManager.Instance.Play(E_Sound_Item.Sfx_Click_Bubble);
+            CommonFunc.PlayClickSound();
 
             CommonFunc.QuitApp();
         }
 
         void OnClickSettingButton()
         {
-            SoundManager.Instance.Play(E_Sound_Item.Sfx_Click_Bubble);
+            CommonFunc.PlayClickSound();
 
             UIManager.Instance.OpenUI(E_SubUI.SubUI_AppSetting);
+        }
+
+        void CallbackConfirmItem(string orderName)
+        {
+            var registUI = UIManager.Instance.OpenUI(E_MainUI.MainUI_Lobby_Regist) as MainUI_Lobby_Regist;
+            if (registUI != null)
+                registUI.SetData(orderName);
         }
         #endregion
     }

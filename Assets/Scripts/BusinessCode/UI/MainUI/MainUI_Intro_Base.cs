@@ -41,14 +41,14 @@ namespace Jenny
         #region // [Func] Callback //
         void OnClickQuitButton()
         {
-            SoundManager.Instance.Play(E_Sound_Item.Sfx_Click_Bubble);
+            CommonFunc.PlayClickSound();
 
             CommonFunc.QuitApp();
         }
 
         void OnClickStartButton()
         {
-            SoundManager.Instance.Play(E_Sound_Item.Sfx_Click_Bubble);
+            CommonFunc.PlayClickSound();
 
             SceneManager.Instance.ChangeScene(SceneManager.E_SCENE_TYPE.Lobby);
         }

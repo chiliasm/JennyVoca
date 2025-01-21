@@ -21,5 +21,10 @@ namespace Jenny
             if (msgUI != null)
                 msgUI.SetData(msg);
         }
+
+        public static void PlayClickSound()
+        {
+            SoundManager.Instance.Play(E_Sound_Item.Sfx_Click_Bubble);
+        }
     }
 }

@@ -7,16 +7,16 @@ namespace Jenny
     [System.Serializable]
     public class VocaContainer
     {
-        public List<VocaData> DataList = new();
+        public List<VocaOrder> DataList = new();
     }
 
     [System.Serializable]
-    public class VocaData
+    public class VocaOrder
     {
         public string OrderName;
         public List<VocaInfo> InfoList = new();
 
-        public VocaData(string orderName)
+        public VocaOrder(string orderName)
         {
             OrderName = orderName;
         }

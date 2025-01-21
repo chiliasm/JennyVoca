@@ -9,9 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7382162173065065497}
-  - component: {fileID: 4155679276389973436}
   m_Layer: 5
-  m_Name: ItemUIRegistVocaInfo
+  m_Name: ItemUISelectOrderInfo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37,21 +36,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 540, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &4155679276389973436
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1150836350239553123}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 409f09bd80e219f468cf905b5e37f235, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _canvas: {fileID: 8052757051438542574}
-  _textInfo: {fileID: 2954582751631144552}
-  _btnDelete: {fileID: 3465886513773746225}
 --- !u!1 &2324485842385232899
 GameObject:
   m_ObjectHideFlags: 0

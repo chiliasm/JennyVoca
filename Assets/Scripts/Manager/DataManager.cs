@@ -39,6 +39,18 @@ namespace Jenny
             return mVocaContainer;
         }
 
+        public VocaOrder GetVocaOrder(string orderName)
+        {
+            if (string.IsNullOrWhiteSpace(orderName))
+                return null;
+            foreach (var it in mVocaContainer.DataList)
+            {
+                if (it.OrderName == orderName)
+                    return it;
+            }
+            return null;
+        }
+
         public void SaveVocaData()
         {
             if (mVocaContainer != null)
@@ -50,51 +62,33 @@ namespace Jenny
             }
         }
 
-        public bool AddVocaData(VocaData data)
+        public void AddVocaOrder(VocaOrder data)
         {
-            if (mVocaContainer == null || data == null)
-                return false;
+            var order = GetVocaOrder(data.OrderName);
+            if (order != null)
+                RemoveVocaOrder(order);
 
-            foreach (var it in mVocaContainer.DataList)
-            {
-                if (it.OrderName == data.OrderName)
-                    return false;
-            }
             mVocaContainer.DataList.Add(data);
-            return true;
         }
 
-        public bool RemoveVocaData(VocaData data)
+        public bool RemoveVocaOrder(VocaOrder order)
         {
-            if (mVocaContainer == null || data == null)
-                return false;
+            return mVocaContainer.DataList.Remove(order);
+        }
 
-            int removeIdx = -1;
-            for (int i=0; i<mVocaContainer.DataList.Count; i++)
-            {
-                if (mVocaContainer.DataList[i].OrderName == data.OrderName)
-                {
-                    removeIdx = i;
-                    break;
-                }
-            }
-            if (removeIdx < 0 || removeIdx >= mVocaContainer.DataList.Count)
-                return false;
-
-            mVocaContainer.DataList.RemoveAt(removeIdx);
-            return true;
+        public bool RemoveVocaOrder(string orderName)
+        {
+            var order = GetVocaOrder(orderName);
+            if (order != null)
+                return RemoveVocaOrder(order);
+            return false;
         }
 
         public List<VocaInfo> GetVocaInfoList(string orderName)
         {
-            if (mVocaContainer == null || string.IsNullOrWhiteSpace(orderName))
-                return null;
-
-            foreach (var it in mVocaContainer.DataList)
-            {
-                if (it.OrderName == orderName)
-                    return it.InfoList;
-            }
+            var order = GetVocaOrder(orderName);
+            if (order != null)
+                return order.InfoList;
             return null;
         }
         #endregion

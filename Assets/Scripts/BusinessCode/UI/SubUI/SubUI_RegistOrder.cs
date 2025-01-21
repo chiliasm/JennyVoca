@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
@@ -8,14 +9,14 @@ using UnityEngine.UI;
 
 namespace Jenny
 {
-    public class SubUI_RegistVoca : SubUI
+    public class SubUI_RegistOrder : SubUI
     {
-        public class RegistVocaScrollItemData : BaseScrollItemData
+        public class RegistOrderScrollItemData : BaseScrollItemData
         {
             public string Name;
             public int Count;
 
-            public RegistVocaScrollItemData(string name, int count)
+            public RegistOrderScrollItemData(string name, int count)
             {
                 Name = name;
                 Count = count;
@@ -37,7 +38,7 @@ namespace Jenny
         #endregion
 
         #region // [Var] Data //
-        readonly List<RegistVocaScrollItemData> mDataList = new();
+        readonly List<RegistOrderScrollItemData> mDataList = new();
 
         System.Action<string> mConfirmCallback;
         #endregion
@@ -89,9 +90,17 @@ namespace Jenny
                 foreach (var it in container.DataList)
                     mDataList.Add(new(it.OrderName, it.InfoList.Count));
             }
-            mConfirmCallback = lpConfirmCallback;
+            if (lpConfirmCallback != null)
+                mConfirmCallback = lpConfirmCallback;
 
             UpdateUI();
+        }
+        #endregion
+
+        #region // [Func] CloseUI //
+        public override void CloseUI()
+        {
+            base.CloseUI();
         }
         #endregion
 
@@ -118,12 +127,12 @@ namespace Jenny
             foreach (var it in mDataList)
             {
                 AddScrollItem(true, (ui) => {
-                    var itemUI = ui as ItemUIRegistVocaInfo;
+                    var itemUI = ui as ItemUIRegistOrderInfo;
                     if (itemUI != null)
                     {
                         itemUI.transform.SetParent(_scrollList.content);
                         itemUI.transform.SetAsFirstSibling();
-                        itemUI.SetData(it);
+                        itemUI.SetData(it, CallbackDeleteItem);
                     }
                 });
             }
@@ -187,14 +196,14 @@ namespace Jenny
         #region // [Func] Callback //
         void OnClickCloseButton()
         {
-            SoundManager.Instance.Play(E_Sound_Item.Sfx_Click_Bubble);
+            CommonFunc.PlayClickSound();
 
             CloseUI();
         }
 
         void OnClickConfirmButton()
         {
-            SoundManager.Instance.Play(E_Sound_Item.Sfx_Click_Bubble);
+            CommonFunc.PlayClickSound();
 
             var orderName = _inputName.text;
             if (IsValidOrderName(orderName) == false)
@@ -203,6 +212,12 @@ namespace Jenny
             mConfirmCallback?.Invoke(orderName);
 
             CloseUI();
+        }
+
+        void CallbackDeleteItem(string orderName)
+        {
+            if (DataManager.Instance.RemoveVocaOrder(orderName))
+                SetData();
         }
         #endregion
     }

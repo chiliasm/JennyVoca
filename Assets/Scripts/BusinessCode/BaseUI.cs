@@ -84,11 +84,6 @@ namespace Jenny
                 if (o.TryGetComponent<ItemUI>(out var comp))
                     info = comp;
             }
-            //if (info != null)
-            //{
-            //    info.transform.SetParent(_scrollList.content);
-            //    info.transform.SetAsLastSibling();
-            //}
             return info;
         }
 

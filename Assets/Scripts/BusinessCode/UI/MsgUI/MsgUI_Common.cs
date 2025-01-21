@@ -56,21 +56,21 @@ namespace Jenny
         #region // [Func] Callback //
         void OnClickCloseButton()
         {
-            SoundManager.Instance.Play(E_Sound_Item.Sfx_Click_Bubble);
+            CommonFunc.PlayClickSound();
 
             CloseUI();
         }
 
         void OnClickCancelButton()
         {
-            SoundManager.Instance.Play(E_Sound_Item.Sfx_Click_Bubble);
+            CommonFunc.PlayClickSound();
 
             CloseUI();
         }
 
         void OnClickOKButton()
         {
-            SoundManager.Instance.Play(E_Sound_Item.Sfx_Click_Bubble);
+            CommonFunc.PlayClickSound();
 
             CloseUI();
         }
