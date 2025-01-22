@@ -10,13 +10,6 @@ namespace Jenny
         #endregion
 
 
-        #region // [Func] Unity //
-        protected override void OnDisable()
-        {
-            base.OnDisable();
-        }
-        #endregion
-
         #region // [Func] Load //
         public Object Load(string path)
         {
