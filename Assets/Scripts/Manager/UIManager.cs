@@ -9,10 +9,12 @@ namespace Jenny
         const string MAIN_UI_PREFAB_PATH = "Prefab/MainUI";
         const string SUB_UI_PREFAB_PATH = "Prefab/SubUI";
         const string MSG_UI_PREFAB_PATH = "Prefab/MsgUI";
+        const string TOAST_UI_PREFAB_PATH = "Prefab/ToastUI";
 
         readonly Dictionary<E_MainUI, MainUI> mMainUIDic = new();
         readonly Dictionary<E_SubUI, SubUI> mSubUIDic = new();
         readonly Dictionary<E_MsgUI, MsgUI> mMsgUIDic = new();
+        readonly Dictionary<E_ToastUI, ToastUI> mToastUIDic = new();
 
         UIController mUIController;
         #endregion
@@ -99,6 +101,25 @@ namespace Jenny
             }
             return msgUI;
         }
+
+        public ToastUI GetOrNewUI(E_ToastUI type)
+        {
+            if (mToastUIDic.TryGetValue(type, out var toastUI) == false)
+            {
+                var path = string.Format("{0}/{1}", TOAST_UI_PREFAB_PATH, type.ToString());
+                var o = ResourceManager.Instance.Load(path);
+                if (o != null)
+                {
+                    var go = GameObject.Instantiate(o) as GameObject;
+                    if (go != null && go.TryGetComponent<ToastUI>(out var comp))
+                    {
+                        toastUI = comp;
+                        mToastUIDic[type] = toastUI;
+                    }
+                }
+            }
+            return toastUI;
+        }
         #endregion
 
         #region // [Func] OpenUI //
@@ -122,6 +143,13 @@ namespace Jenny
                 return mUIController.OpenUI(type);
             return null;
         }
+
+        public ToastUI OpenUI(E_ToastUI type)
+        {
+            if (mUIController != null)
+                return mUIController.OpenUI(type);
+            return null;
+        }
         #endregion
 
         #region // [Func] CloseUI //
@@ -138,6 +166,12 @@ namespace Jenny
         }
 
         public void CloseUI(E_MsgUI type)
+        {
+            if (mUIController != null)
+                mUIController.CloseUI(type);
+        }
+
+        public void CloseUI(E_ToastUI type)
         {
             if (mUIController != null)
                 mUIController.CloseUI(type);

@@ -11,9 +11,7 @@ namespace Jenny
         #region // [Var] Unity //
         [Header("== ExamInfo ==")]
         [SerializeField]
-        TMP_Text _textKr;
-        [SerializeField]
-        TMP_Text _textInput;
+        TMP_Text _textQuiz;
         [SerializeField]
         TMP_Text _textEn;
         [SerializeField]
@@ -53,14 +51,13 @@ namespace Jenny
         #region // [Func] UpdateUI //
         void UpdateUI()
         {
-            _textKr.text = string.Format("{0}", mData.Kr);
-            _textInput.text = mData.Input;
-            _textEn.text = string.Format("=> ({0})", mData.En);
+            _textQuiz.text = string.Format("{0} > {1}", mData.Kr, mData.Input);
+            _textEn.text = mData.En;
 
             _goResult.SetActive(mIsShowResult);
             _goPass.SetActive(mData.IsPass);
             _goFail.SetActive(!mData.IsPass);
-            _textEn.gameObject.SetActive(mIsShowResult && !mData.IsPass);
+            _textEn.gameObject.SetActive(mIsShowResult);
         }
         #endregion
     }

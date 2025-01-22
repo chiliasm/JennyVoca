@@ -48,7 +48,10 @@ namespace Jenny
                 mStartTime = Time.realtimeSinceStartup;
 
                 if (mIndex >= mMax)
+                {
+                    mIsStart = false;
                     mFinishCallback?.Invoke();
+                }
             }
         }
 
@@ -194,7 +197,6 @@ namespace Jenny
             }
             
             SetExamState(E_ExamState.Ready);
-
             UpdateUI();
         }
 
@@ -267,6 +269,7 @@ namespace Jenny
         void UpdateUI()
         {
             UpdateUITitle();
+            UpdateUIInput();
             UpdateUIScroll();
             UpdateUITimer();
         }
@@ -276,23 +279,34 @@ namespace Jenny
             _textOrder.text = mOrderName;
         }
 
+        void UpdateUIInput()
+        {
+            var kr = string.Empty;
+            if (mExamInfo.IsStart)
+                kr = mQuizList[mExamInfo.Index].Kr;
+            
+            _textKr.text = kr;
+            _inputEn.text = string.Empty;
+        }
+
         void UpdateUIScroll()
         {
+            mItemList.Clear();
             RemoveAllScrollItem();
 
-            foreach (var it in mItemList)
-            {
-                AddScrollItem(true, (ui) =>
-                {
-                    var itemUI = ui as ItemUIExamInfo;
-                    if (itemUI != null)
-                    {
-                        itemUI.transform.SetParent(_scrollList.content);
-                        itemUI.transform.SetAsLastSibling();
-                        itemUI.SetData(it);
-                    }
-                });
-            }
+            //foreach (var it in mItemList)
+            //{
+            //    AddScrollItem(true, (ui) =>
+            //    {
+            //        var itemUI = ui as ItemUIExamInfo;
+            //        if (itemUI != null)
+            //        {
+            //            itemUI.transform.SetParent(_scrollList.content);
+            //            itemUI.transform.SetAsLastSibling();
+            //            itemUI.SetData(it);
+            //        }
+            //    });
+            //}
         }
 
         void UpdateUITimer()
@@ -319,18 +333,18 @@ namespace Jenny
 
             _sliderTimer.value = ratio;
             _textTimer.text = ((int)elapsedTime > 0) ? string.Format("{0} s", (int)elapsedTime) : string.Empty;
-            _textTimer.color = (ratio >= TEXT_CAUTION_RATIO) ? Color.red : Color.black;
+            _textTimer.color = (ratio >= TEXT_CAUTION_RATIO) ? Color.yellow : Color.black;
         }
         #endregion
 
         #region // [Func] Marking //
-        void RunMarking()
+        void RunMarking(System.Action lpCompleteCallback = null)
         {
             if (ClearCoroutine(ref mCorRunMarking))
-                mCorRunMarking = StartCoroutine(CorRunMarking());
+                mCorRunMarking = StartCoroutine(CorRunMarking(lpCompleteCallback));
         }
 
-        IEnumerator CorRunMarking()
+        IEnumerator CorRunMarking(System.Action lpCompleteCallback = null)
         {
             var list = GetScrollItemList();
             foreach (var it in list)
@@ -341,6 +355,9 @@ namespace Jenny
 
                 yield return new WaitForSeconds(0.3f);
             }
+            yield return new WaitForSeconds(0.5f);
+
+            lpCompleteCallback?.Invoke();
             mCorRunMarking = null;
         }
         #endregion
@@ -348,12 +365,32 @@ namespace Jenny
         #region // [Func] Callback //
         void OnClickCloseButton()
         {
-            CommonFunc.PlayClickSound();
+            CloseUI();
         }
 
         void OnClickSubmitButton()
         {
-            CommonFunc.PlayClickSound();
+            SoundManager.Instance.Play(E_Sound_Item.Sfx_Click_Submit);
+
+            if (mExamInfo.IsStart)
+            {
+                var info = mQuizList[mExamInfo.Index];
+
+                ExamScrollItemData data = new(info.En, info.Kr, _inputEn.text);
+                mItemList.Add(data);
+                AddScrollItem(false, (ui) => {
+                    var itemUI = ui as ItemUIExamInfo;
+                    if (itemUI != null)
+                    {
+                        itemUI.transform.SetParent(_scrollList.content);
+                        itemUI.transform.SetAsLastSibling();
+                        itemUI.SetData(data);
+                    }
+                });
+
+                mExamInfo.Next();
+                UpdateUIInput();
+            }
         }
 
         void OnClickStartButton()
@@ -361,17 +398,26 @@ namespace Jenny
             CommonFunc.PlayClickSound();
 
             SetExamState(E_ExamState.Testing);
+
             mExamInfo.Next();
+            UpdateUIInput();
         }
 
         void OnClickMarkingButton()
         {
             CommonFunc.PlayClickSound();
+
+            RunMarking(() => {
+                SetExamState(E_ExamState.Retry);
+            });
         }
 
         void OnClickRetryButton()
         {
             CommonFunc.PlayClickSound();
+
+            SetExamState(E_ExamState.Ready);
+            UpdateUI();
         }
 
         void CallbackQuitNextFinish()

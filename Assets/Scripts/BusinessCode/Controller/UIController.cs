@@ -11,6 +11,8 @@ namespace Jenny
         SubUIController _subUIController;
         [SerializeField]
         MsgUIController _msgUIController;
+        [SerializeField]
+        ToastUIController _toastUIController;
         #endregion
 
 
@@ -34,6 +36,11 @@ namespace Jenny
         {
             return _msgUIController.OpenUI(type);
         }
+
+        public ToastUI OpenUI(E_ToastUI type)
+        {
+            return _toastUIController.OpenUI(type);
+        }
         #endregion
 
         #region // [Func] CloseUI //
@@ -50,6 +57,11 @@ namespace Jenny
         public void CloseUI(E_MsgUI type)
         {
             _msgUIController.CloseUI(type);
+        }
+
+        public void CloseUI(E_ToastUI type)
+        {
+            _toastUIController.CloseUI(type);
         }
         #endregion
     }

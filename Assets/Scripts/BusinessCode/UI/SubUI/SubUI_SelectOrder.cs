@@ -103,15 +103,11 @@ namespace Jenny
         #region // [Func] Callback //
         void OnClickCloseButton()
         {
-            CommonFunc.PlayClickSound();
-
             CloseUI();
         }
 
         void OnClickSelectButton()
         {
-            CommonFunc.PlayClickSound();
-
             if (mSelectID >= 0 && mDataList.Count > mSelectID)
             {
                 var mainUI = UIManager.Instance.OpenUI(E_MainUI.MainUI_Lobby_Exam) as MainUI_Lobby_Exam;

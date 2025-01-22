@@ -15,22 +15,22 @@ namespace Jenny
         #region // [Func] Show //
         public MsgUI OpenUI(E_MsgUI type)
         {
-            if (mDataDic.TryGetValue(type, out var msgUI) == false)
+            if (mDataDic.TryGetValue(type, out var comp) == false)
             {
-                msgUI = UIManager.Instance.GetOrNewUI(type);
-                mDataDic[type] = msgUI;
+                comp = UIManager.Instance.GetOrNewUI(type);
+                mDataDic[type] = comp;
             }
 
             SetLastOrderUI(type);
-            if (msgUI != null)
+            if (comp != null)
             {
-                msgUI.transform.SetParent(Tr);
-                msgUI.transform.SetAsLastSibling();
-                msgUI.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
-                msgUI.SetType(type);
-                msgUI.Show(true);
+                comp.transform.SetParent(Tr);
+                comp.transform.SetAsLastSibling();
+                comp.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
+                comp.SetType(type);
+                comp.Show(true);
             }
-            return msgUI;
+            return comp;
         }
 
         public void CloseUI(E_MsgUI type = E_MsgUI.Last)
@@ -39,9 +39,9 @@ namespace Jenny
                 type = GetLastOrderUI();
             if (type != E_MsgUI.None)
             {
-                if (mDataDic.TryGetValue(type, out var msgUI))
+                if (mDataDic.TryGetValue(type, out var comp))
                 {
-                    msgUI.Hide(true);
+                    comp.Hide(true);
                     mOrderList.Remove(type);
                 }
             }
@@ -51,8 +51,8 @@ namespace Jenny
         {
             foreach (var it in mOrderList)
             {
-                if (mDataDic.TryGetValue(it, out var msgUI))
-                    msgUI.Hide(true);
+                if (mDataDic.TryGetValue(it, out var comp))
+                    comp.Hide(true);
             }
             mOrderList.Clear();
         }

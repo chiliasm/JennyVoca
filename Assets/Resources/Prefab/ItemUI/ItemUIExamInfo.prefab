@@ -170,7 +170,7 @@ GameObject:
   - component: {fileID: 2973456166156883661}
   - component: {fileID: 1970640048043642547}
   m_Layer: 5
-  m_Name: text_kr
+  m_Name: text_quiz
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -223,7 +223,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC81C\uB2C8"
+  m_text: "\uC81C\uB2C8 > Jenny"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2b475b6a94fc57c4c9e6d11a2b91300f, type: 2}
   m_sharedMaterial: {fileID: -2537487144722278841, guid: 2b475b6a94fc57c4c9e6d11a2b91300f, type: 2}
@@ -327,7 +327,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: 20, y: 0}
-  m_SizeDelta: {x: 439.603, y: 70}
+  m_SizeDelta: {x: 440, y: 70}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &5904385778864740333
 CanvasRenderer:
@@ -357,7 +357,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: -> Jenny
+  m_text: Jenny
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2b475b6a94fc57c4c9e6d11a2b91300f, type: 2}
   m_sharedMaterial: {fileID: -2537487144722278841, guid: 2b475b6a94fc57c4c9e6d11a2b91300f, type: 2}
@@ -366,8 +366,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4279045626
-  m_fontColor: {r: 0.9811321, g: 0.0509078, b: 0.0509078, a: 1}
+    rgba: 4289412907
+  m_fontColor: {r: 0.16745283, g: 0.24757871, b: 0.6698113, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -476,8 +476,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _canvas: {fileID: 6744408905229571637}
-  _textKr: {fileID: 1970640048043642547}
-  _textInput: {fileID: 7437614304679116811}
+  _textQuiz: {fileID: 1970640048043642547}
   _textEn: {fileID: 1144113450418910589}
   _goResult: {fileID: 6290520830593968691}
   _goPass: {fileID: 5008113917271218537}
@@ -571,7 +570,7 @@ GameObject:
   - component: {fileID: 7437614304679116811}
   - component: {fileID: 762437347824479017}
   m_Layer: 5
-  m_Name: text_input
+  m_Name: text_correct
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -595,7 +594,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: -85}
-  m_SizeDelta: {x: 0, y: 70}
+  m_SizeDelta: {x: 103.21, y: 70}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &6468200526702054828
 CanvasRenderer:
@@ -625,7 +624,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Jenny
+  m_text: (Correct)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2b475b6a94fc57c4c9e6d11a2b91300f, type: 2}
   m_sharedMaterial: {fileID: -2537487144722278841, guid: 2b475b6a94fc57c4c9e6d11a2b91300f, type: 2}
@@ -652,8 +651,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -701,7 +700,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5198991355205179089}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
   m_Name: 

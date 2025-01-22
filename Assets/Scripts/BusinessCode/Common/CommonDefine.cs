@@ -33,6 +33,15 @@ namespace Jenny
         Last,
     }
 
+    public enum E_ToastUI
+    {
+        None = -1,
+
+        ToastUI_Common,
+
+        Last,
+    }
+
     public enum E_Sound_Item
     {
         None = -1,
@@ -44,7 +53,11 @@ namespace Jenny
 
         //  Sfx.
         Sfx_Begin,
-        Sfx_Click_Bubble,
+        Sfx_Click,
+        Sfx_Click_Submit,
+        Sfx_Close_UI,
+        Sfx_NewQuiz,
+        Sfx_PerfectScore,
         Sfx_End,
 
         Max,

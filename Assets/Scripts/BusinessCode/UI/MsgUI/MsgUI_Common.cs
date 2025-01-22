@@ -51,22 +51,16 @@ namespace Jenny
         #region // [Func] Callback //
         void OnClickCloseButton()
         {
-            CommonFunc.PlayClickSound();
-
             CloseUI();
         }
 
         void OnClickCancelButton()
         {
-            CommonFunc.PlayClickSound();
-
             CloseUI();
         }
 
         void OnClickOKButton()
         {
-            CommonFunc.PlayClickSound();
-
             CloseUI();
         }
         #endregion

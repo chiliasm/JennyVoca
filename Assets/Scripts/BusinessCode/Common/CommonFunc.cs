@@ -17,14 +17,24 @@ namespace Jenny
 
         public static void OpenMsgUI(string msg)
         {
-            var msgUI = UIManager.Instance.OpenUI(E_MsgUI.MsgUI_Common) as MsgUI_Common;
-            if (msgUI != null)
-                msgUI.SetData(msg);
+            var ui = UIManager.Instance.OpenUI(E_MsgUI.MsgUI_Common) as MsgUI_Common;
+            if (ui != null)
+                ui.SetData(msg);
+        }
+
+        public static void OpenToastUI(string msg)
+        {
+            var ui = UIManager.Instance.OpenUI(E_ToastUI.ToastUI_Common) as ToastUI_Common;
+            if (ui != null)
+            {
+                SoundManager.Instance.Play(E_Sound_Item.Sfx_NewQuiz);
+                ui.SetData(msg);
+            }   
         }
 
         public static void PlayClickSound()
         {
-            SoundManager.Instance.Play(E_Sound_Item.Sfx_Click_Bubble);
+            SoundManager.Instance.Play(E_Sound_Item.Sfx_Click);
         }
     }
 }

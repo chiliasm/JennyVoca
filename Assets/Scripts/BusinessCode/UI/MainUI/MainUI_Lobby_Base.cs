@@ -55,6 +55,16 @@ namespace Jenny
         void OnClickExamButton()
         {
             CommonFunc.PlayClickSound();
+
+            var subUI = UIManager.Instance.OpenUI(E_SubUI.SubUI_SelectOrder) as SubUI_SelectOrder;
+            if (subUI != null)
+            {
+                subUI.SetData((orderName) => {
+                    var mainUI = UIManager.Instance.OpenUI(E_MainUI.MainUI_Lobby_Exam) as MainUI_Lobby_Exam;
+                    if (mainUI != null)
+                        mainUI.SetData(orderName);
+                });
+            }
         }
 
         void OnClickQuitButton()

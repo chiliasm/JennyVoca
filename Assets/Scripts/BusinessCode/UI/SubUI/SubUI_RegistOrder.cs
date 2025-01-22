@@ -179,15 +179,11 @@ namespace Jenny
         #region // [Func] Callback //
         void OnClickCloseButton()
         {
-            CommonFunc.PlayClickSound();
-
             CloseUI();
         }
 
         void OnClickConfirmButton()
         {
-            CommonFunc.PlayClickSound();
-
             var orderName = _inputName.text;
             if (IsValidOrderName(orderName) == false)
                 orderName = MakeOrderNameRandom(orderName);

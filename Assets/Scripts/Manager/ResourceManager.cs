@@ -14,8 +14,6 @@ namespace Jenny
         protected override void OnDisable()
         {
             base.OnDisable();
-
-            UnloadAll();
         }
         #endregion
 

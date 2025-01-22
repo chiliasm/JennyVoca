@@ -38,7 +38,7 @@ namespace Jenny
         public override void CloseUI()
         {
             base.CloseUI();
-
+            
             UIManager.Instance.CloseUI(mMainUIType);
         }
         #endregion

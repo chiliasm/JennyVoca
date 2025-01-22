@@ -169,15 +169,11 @@ namespace Jenny
         #region // [Func] Callback //
         void OnClickCloseButton()
         {
-            CommonFunc.PlayClickSound();
-
             CloseUI();
         }
 
         void OnClickRegistButton()
         {
-            CommonFunc.PlayClickSound();
-
             if (mItemList.Count > 0)
             {
                 VocaOrder order = new(mOrderName);

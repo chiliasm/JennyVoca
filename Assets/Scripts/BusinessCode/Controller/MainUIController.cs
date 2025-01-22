@@ -18,22 +18,22 @@ namespace Jenny
             if (lastMainUI != null)
                 lastMainUI.Hide(true);
 
-            if (mDataDic.TryGetValue(type, out var mainUI) == false)
+            if (mDataDic.TryGetValue(type, out var comp) == false)
             {
-                mainUI = UIManager.Instance.GetOrNewUI(type);
-                mDataDic[type] = mainUI;
+                comp = UIManager.Instance.GetOrNewUI(type);
+                mDataDic[type] = comp;
             }
 
             SetLastOrderUI(type);
-            if (mainUI != null)
+            if (comp != null)
             {
-                mainUI.transform.SetParent(Tr);
-                mainUI.transform.SetAsLastSibling();
-                mainUI.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
-                mainUI.SetType(type);
-                mainUI.Show(true);
+                comp.transform.SetParent(Tr);
+                comp.transform.SetAsLastSibling();
+                comp.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
+                comp.SetType(type);
+                comp.Show(true);
             }
-            return mainUI;
+            return comp;
         }
 
         public void CloseUI(E_MainUI type = E_MainUI.Last)
@@ -50,18 +50,18 @@ namespace Jenny
                 }   
             }
 
-            var lastMainUI = GetLastMainUI();
-            if (lastMainUI != null)
-                lastMainUI.Show(true);
+            var lastComp = GetLastMainUI();
+            if (lastComp != null)
+                lastComp.Show(true);
         }
 
         public void CloseAllUI()
         {
             foreach (var it in mOrderList)
             {
-                var mainUI = GetMainUI(it);
-                if (mainUI != null)
-                    mainUI.Hide(true);
+                var comp = GetMainUI(it);
+                if (comp != null)
+                    comp.Hide(true);
             }
             mOrderList.Clear();
         }
@@ -70,9 +70,9 @@ namespace Jenny
         #region // [Func] MainUI //
         MainUI GetMainUI(E_MainUI type)
         {
-            if (mDataDic.TryGetValue(type, out var mainUI) == false)
-                return null;
-            return mainUI;
+            if (mDataDic.TryGetValue(type, out var comp))
+                return comp;
+            return null;
         }
 
         MainUI GetLastMainUI()

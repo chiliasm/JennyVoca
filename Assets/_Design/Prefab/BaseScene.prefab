@@ -286,6 +286,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7728204fb945674993b4ed6d1cd39c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &5906349363787630994
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1144692673353739057}
+  - component: {fileID: 84649148969456733}
+  m_Layer: 5
+  m_Name: ToastUI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1144692673353739057
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5906349363787630994}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8966395495286804112}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &84649148969456733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5906349363787630994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a78ab47939d3e694fba4932716b7825b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6259884807972657459
 GameObject:
   m_ObjectHideFlags: 0
@@ -420,6 +468,7 @@ RectTransform:
   - {fileID: 682780424889323670}
   - {fileID: 1404409039469805898}
   - {fileID: 6381464227860907531}
+  - {fileID: 1144692673353739057}
   m_Father: {fileID: 7783145795734299401}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -442,6 +491,7 @@ MonoBehaviour:
   _mainUIController: {fileID: 3089171268199689208}
   _subUIController: {fileID: 1065029061147542885}
   _msgUIController: {fileID: 913745181025309024}
+  _toastUIController: {fileID: 84649148969456733}
 --- !u!1 &7878699076163640223
 GameObject:
   m_ObjectHideFlags: 0
