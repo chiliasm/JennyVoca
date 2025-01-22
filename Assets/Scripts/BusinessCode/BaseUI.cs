@@ -24,6 +24,14 @@ namespace Jenny
 
 
         #region // [Func] Unity //
+        protected override void Start()
+        {
+            base.Start();
+
+            //Rt.anchorMin = Vector2.zero;
+            //Rt.anchorMax = Vector2.one;
+        }
+
         protected override void OnEnable()
         {
             base.OnEnable();

@@ -26,6 +26,20 @@ namespace Jenny
                 return _tr;
             }
         }
+
+        RectTransform _rt;
+        protected RectTransform Rt
+        {
+            get
+            {
+                if (_rt == null)
+                {
+                    if (Go.TryGetComponent<RectTransform>(out var comp))
+                        _rt = comp;
+                }
+                return _rt;
+            }
+        }
         #endregion
 
 

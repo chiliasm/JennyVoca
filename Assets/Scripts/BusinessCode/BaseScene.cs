@@ -28,16 +28,27 @@ namespace Jenny
         {
             base.Start();
 
+            InitApp();
+
             InitCamera();
 
             InitMainUI();
         }
         #endregion
 
-        #region // [Func] Camera //
+        #region // [Func] Init //
+        void InitApp()
+        {
+            if (mSceneType == E_SCENE_TYPE.Intro)
+            {
+                Screen.SetResolution(720, 1280, true);
+                Screen.sleepTimeout = SleepTimeout.NeverSleep;
+            }
+        }
+
         void InitCamera()
         {
-            _camera.backgroundColor = Color.white;
+            _camera.backgroundColor = Color.white;            
         }
         #endregion
 
