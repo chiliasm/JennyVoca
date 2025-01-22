@@ -50,6 +50,7 @@ SpriteAtlas:
     isAtlasV2: 0
     cachedData: {fileID: 0}
     packedSpriteRenderDataKeys:
+    - e36cbf20a79a606408a29cda5514295a: 21300000
     - 6dee3b30f70b56f41bbe85a3eb2d21ec: 21300000
     - bb67df502e5e52d4798930df4b3fd3fd: 21300000
     - 406902c0bcce1644a91bb9df25c03a5f: 21300000
@@ -105,11 +106,13 @@ SpriteAtlas:
     - 4c48a3be905dcfb47865eecd2edfe9f9: 21300000
     - 2ca026be8e0f7f64391248ce26845592: 21300000
     - abb588ce06c7ef24ca1ce0d5f770a5b3: 21300000
+    - e37924debb0e89442833344bcdc88332: 21300000
     - 3e65d5af52e3d264eb6c3387142ff949: 21300000
     - 93be09df72526394da0e1604992172d3: 21300000
     - b6ee45ff496e47d4a8b74ea65bf75805: 21300000
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
+  - {fileID: 21300000, guid: e36cbf20a79a606408a29cda5514295a, type: 3}
   - {fileID: 21300000, guid: 6dee3b30f70b56f41bbe85a3eb2d21ec, type: 3}
   - {fileID: 21300000, guid: bb67df502e5e52d4798930df4b3fd3fd, type: 3}
   - {fileID: 21300000, guid: 406902c0bcce1644a91bb9df25c03a5f, type: 3}
@@ -165,10 +168,12 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 4c48a3be905dcfb47865eecd2edfe9f9, type: 3}
   - {fileID: 21300000, guid: 2ca026be8e0f7f64391248ce26845592, type: 3}
   - {fileID: 21300000, guid: abb588ce06c7ef24ca1ce0d5f770a5b3, type: 3}
+  - {fileID: 21300000, guid: e37924debb0e89442833344bcdc88332, type: 3}
   - {fileID: 21300000, guid: 3e65d5af52e3d264eb6c3387142ff949, type: 3}
   - {fileID: 21300000, guid: 93be09df72526394da0e1604992172d3, type: 3}
   - {fileID: 21300000, guid: b6ee45ff496e47d4a8b74ea65bf75805, type: 3}
   m_PackedSpriteNamesToIndex:
+  - Icon_Check
   - Frame_Square_Honey
   - Frame_Square_White
   - Frame_Border_Honey
@@ -224,6 +229,7 @@ SpriteAtlas:
   - Button_Circle_Red
   - Icon_Balloon_Boom
   - Icon_Music_Off
+  - Icon_X
   - Frame_Trapezoid_Red
   - Icon_Heart
   - Button_Circle_Yellow
