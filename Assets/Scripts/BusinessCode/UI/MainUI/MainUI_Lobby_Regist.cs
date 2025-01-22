@@ -169,11 +169,15 @@ namespace Jenny
         #region // [Func] Callback //
         void OnClickCloseButton()
         {
+            SoundManager.Instance.Play(E_Sound_Item.Sfx_Click);
+
             CloseUI();
         }
 
         void OnClickRegistButton()
         {
+            SoundManager.Instance.Play(E_Sound_Item.Sfx_Click);
+
             if (mItemList.Count > 0)
             {
                 VocaOrder order = new(mOrderName);
@@ -189,7 +193,7 @@ namespace Jenny
 
         void OnClickAddButton()
         {
-            CommonFunc.PlayClickSound();
+            SoundManager.Instance.Play(E_Sound_Item.Sfx_Click);
 
             var en = _inputEn.text;
             var kr = _inputKr.text;
@@ -230,7 +234,7 @@ namespace Jenny
 
         void OnClickModifyButton()
         {
-            CommonFunc.PlayClickSound();
+            SoundManager.Instance.Play(E_Sound_Item.Sfx_Click);
 
             if (mItemList.Count <= mModifyID || mModifyID < 0 )
                 return;

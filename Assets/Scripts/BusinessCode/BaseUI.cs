@@ -54,7 +54,6 @@ namespace Jenny
 
         virtual public void CloseUI()
         {
-            SoundManager.Instance.Play(E_Sound_Item.Sfx_Close_UI);
         }
         #endregion
 

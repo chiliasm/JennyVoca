@@ -133,7 +133,7 @@ namespace Jenny
 
         #region // [Var] Data //
         const float MAX_TESTING_TIME = 20f;
-        const float TEXT_CAUTION_RATIO = 0.75f;
+        const float TEXT_CAUTION_RATIO = 0.8f;
 
         string mOrderName;
         readonly List<(string, string)> mDataList = new();
@@ -170,6 +170,13 @@ namespace Jenny
             _btnStart.onClick.RemoveListener(OnClickStartButton);
             _btnMarking.onClick.RemoveListener(OnClickMarkingButton);
             _btnRetry.onClick.RemoveListener(OnClickRetryButton);
+        }
+
+        protected override void Update()
+        {
+            base.Update();
+
+            UpdateUITimer();
         }
         #endregion
 
@@ -293,20 +300,6 @@ namespace Jenny
         {
             mItemList.Clear();
             RemoveAllScrollItem();
-
-            //foreach (var it in mItemList)
-            //{
-            //    AddScrollItem(true, (ui) =>
-            //    {
-            //        var itemUI = ui as ItemUIExamInfo;
-            //        if (itemUI != null)
-            //        {
-            //            itemUI.transform.SetParent(_scrollList.content);
-            //            itemUI.transform.SetAsLastSibling();
-            //            itemUI.SetData(it);
-            //        }
-            //    });
-            //}
         }
 
         void UpdateUITimer()
@@ -346,17 +339,29 @@ namespace Jenny
 
         IEnumerator CorRunMarking(System.Action lpCompleteCallback = null)
         {
+            int passCount = 0;
             var list = GetScrollItemList();
             foreach (var it in list)
             {
                 var itemUI = it as ItemUIExamInfo;
                 if (itemUI != null)
+                {
                     itemUI.ShowResult(true);
+
+                    if (itemUI.IsPass())
+                        passCount++;
+                }   
 
                 yield return new WaitForSeconds(0.3f);
             }
             yield return new WaitForSeconds(0.5f);
 
+            var msg = string.Format("Pass count : {0} / {1}", passCount, list.Count);
+            CommonFunc.OpenToastUI(msg);
+            if (passCount.Equals(list.Count))
+                SoundManager.Instance.Play(E_Sound_Item.Sfx_PerfectScore);
+            yield return new WaitForSeconds(2f);
+            
             lpCompleteCallback?.Invoke();
             mCorRunMarking = null;
         }
@@ -365,6 +370,8 @@ namespace Jenny
         #region // [Func] Callback //
         void OnClickCloseButton()
         {
+            SoundManager.Instance.Play(E_Sound_Item.Sfx_Click);
+
             CloseUI();
         }
 
@@ -395,7 +402,7 @@ namespace Jenny
 
         void OnClickStartButton()
         {
-            CommonFunc.PlayClickSound();
+            SoundManager.Instance.Play(E_Sound_Item.Sfx_Click);
 
             SetExamState(E_ExamState.Testing);
 
@@ -405,7 +412,7 @@ namespace Jenny
 
         void OnClickMarkingButton()
         {
-            CommonFunc.PlayClickSound();
+            SoundManager.Instance.Play(E_Sound_Item.Sfx_Click);
 
             RunMarking(() => {
                 SetExamState(E_ExamState.Retry);
@@ -414,7 +421,7 @@ namespace Jenny
 
         void OnClickRetryButton()
         {
-            CommonFunc.PlayClickSound();
+            SoundManager.Instance.Play(E_Sound_Item.Sfx_Click);
 
             SetExamState(E_ExamState.Ready);
             UpdateUI();

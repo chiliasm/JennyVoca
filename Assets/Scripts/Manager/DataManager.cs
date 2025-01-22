@@ -129,7 +129,7 @@ namespace Jenny
         #region // [Func] FilePath //
         string GetVocaFilePath()
         {
-            return string.Format("{0}/{1}.json", Application.streamingAssetsPath, VOCA_DATA_FILENAME);
+            return string.Format("{0}/{1}.json", Application.persistentDataPath, VOCA_DATA_FILENAME);
         }
         #endregion
     }

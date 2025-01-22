@@ -252,8 +252,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Jenny Voca
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: ab210bfd067e53d4788d65416f820b4e, type: 2}
-  m_sharedMaterial: {fileID: 5766692656162758905, guid: ab210bfd067e53d4788d65416f820b4e, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2b475b6a94fc57c4c9e6d11a2b91300f, type: 2}
+  m_sharedMaterial: {fileID: -2537487144722278841, guid: 2b475b6a94fc57c4c9e6d11a2b91300f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -890,7 +890,7 @@ PrefabInstance:
     - target: {fileID: 250750199815338609, guid: 97c7e871fa6a9b4438312b7ec48746c0, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 974d4844db8f9ed44bb6950697a25af1, type: 3}
+      objectReference: {fileID: 21300000, guid: 7ecbc7a4156881a49a0c7fa8f8f484f6, type: 3}
     - target: {fileID: 893258342015612107, guid: 97c7e871fa6a9b4438312b7ec48746c0, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -975,6 +975,14 @@ PrefabInstance:
       propertyPath: m_text
       value: Exam
       objectReference: {fileID: 0}
+    - target: {fileID: 3032095887014027378, guid: 97c7e871fa6a9b4438312b7ec48746c0, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 2b475b6a94fc57c4c9e6d11a2b91300f, type: 2}
+    - target: {fileID: 3032095887014027378, guid: 97c7e871fa6a9b4438312b7ec48746c0, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -2537487144722278841, guid: 2b475b6a94fc57c4c9e6d11a2b91300f, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1156,7 +1164,7 @@ PrefabInstance:
     - target: {fileID: 250750199815338609, guid: 97c7e871fa6a9b4438312b7ec48746c0, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: a2583d9412cd08047b41235802ae5d72, type: 3}
+      objectReference: {fileID: 21300000, guid: ab37b5e481331d148ba8a8532fcba088, type: 3}
     - target: {fileID: 893258342015612107, guid: 97c7e871fa6a9b4438312b7ec48746c0, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1241,6 +1249,14 @@ PrefabInstance:
       propertyPath: m_text
       value: Regist
       objectReference: {fileID: 0}
+    - target: {fileID: 3032095887014027378, guid: 97c7e871fa6a9b4438312b7ec48746c0, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 2b475b6a94fc57c4c9e6d11a2b91300f, type: 2}
+    - target: {fileID: 3032095887014027378, guid: 97c7e871fa6a9b4438312b7ec48746c0, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -2537487144722278841, guid: 2b475b6a94fc57c4c9e6d11a2b91300f, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

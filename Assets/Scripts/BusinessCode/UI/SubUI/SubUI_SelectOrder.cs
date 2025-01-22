@@ -103,11 +103,15 @@ namespace Jenny
         #region // [Func] Callback //
         void OnClickCloseButton()
         {
+            SoundManager.Instance.Play(E_Sound_Item.Sfx_Click);
+
             CloseUI();
         }
 
         void OnClickSelectButton()
         {
+            SoundManager.Instance.Play(E_Sound_Item.Sfx_Click);
+
             if (mSelectID >= 0 && mDataList.Count > mSelectID)
             {
                 var mainUI = UIManager.Instance.OpenUI(E_MainUI.MainUI_Lobby_Exam) as MainUI_Lobby_Exam;

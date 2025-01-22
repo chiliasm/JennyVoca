@@ -35,7 +35,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 540, y: 50}
+  m_SizeDelta: {x: 540, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &6224589662471204191
 MonoBehaviour:
@@ -121,8 +121,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "2025 01 1\uC8FC\uCC28"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: ab210bfd067e53d4788d65416f820b4e, type: 2}
-  m_sharedMaterial: {fileID: 5766692656162758905, guid: ab210bfd067e53d4788d65416f820b4e, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2b475b6a94fc57c4c9e6d11a2b91300f, type: 2}
+  m_sharedMaterial: {fileID: -2537487144722278841, guid: 2b475b6a94fc57c4c9e6d11a2b91300f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

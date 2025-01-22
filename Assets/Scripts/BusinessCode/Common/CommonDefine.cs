@@ -54,6 +54,7 @@ namespace Jenny
         //  Sfx.
         Sfx_Begin,
         Sfx_Click,
+        Sfx_Click_Item,
         Sfx_Click_Submit,
         Sfx_Close_UI,
         Sfx_NewQuiz,

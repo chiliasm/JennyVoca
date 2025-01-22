@@ -39,6 +39,13 @@ namespace Jenny
         }
         #endregion
 
+        #region // [Func] Get //
+        public bool IsPass()
+        {
+            return mData.IsPass;
+        }
+        #endregion
+
         #region // [Func] Show //
         public void ShowResult(bool isShow)
         {
@@ -59,6 +66,6 @@ namespace Jenny
             _goFail.SetActive(!mData.IsPass);
             _textEn.gameObject.SetActive(mIsShowResult);
         }
-        #endregion
+        #endregion        
     }
 }

@@ -179,11 +179,15 @@ namespace Jenny
         #region // [Func] Callback //
         void OnClickCloseButton()
         {
+            SoundManager.Instance.Play(E_Sound_Item.Sfx_Click);
+
             CloseUI();
         }
 
         void OnClickConfirmButton()
         {
+            SoundManager.Instance.Play(E_Sound_Item.Sfx_Click);
+
             var orderName = _inputName.text;
             if (IsValidOrderName(orderName) == false)
                 orderName = MakeOrderNameRandom(orderName);

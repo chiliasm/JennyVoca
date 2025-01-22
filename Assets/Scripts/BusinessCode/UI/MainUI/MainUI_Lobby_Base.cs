@@ -45,7 +45,7 @@ namespace Jenny
         #region // [Func] Callback //
         void OnClickRegistButton()
         {
-            CommonFunc.PlayClickSound();
+            SoundManager.Instance.Play(E_Sound_Item.Sfx_Click);
 
             var registOrderUI = UIManager.Instance.OpenUI(E_SubUI.SubUI_RegistOrder) as SubUI_RegistOrder;
             if (registOrderUI != null)
@@ -54,7 +54,7 @@ namespace Jenny
 
         void OnClickExamButton()
         {
-            CommonFunc.PlayClickSound();
+            SoundManager.Instance.Play(E_Sound_Item.Sfx_Click);
 
             var subUI = UIManager.Instance.OpenUI(E_SubUI.SubUI_SelectOrder) as SubUI_SelectOrder;
             if (subUI != null)
@@ -69,14 +69,14 @@ namespace Jenny
 
         void OnClickQuitButton()
         {
-            CommonFunc.PlayClickSound();
+            SoundManager.Instance.Play(E_Sound_Item.Sfx_Click);
 
             CommonFunc.QuitApp();
         }
 
         void OnClickSettingButton()
         {
-            CommonFunc.PlayClickSound();
+            SoundManager.Instance.Play(E_Sound_Item.Sfx_Click);
 
             UIManager.Instance.OpenUI(E_SubUI.SubUI_AppSetting);
         }

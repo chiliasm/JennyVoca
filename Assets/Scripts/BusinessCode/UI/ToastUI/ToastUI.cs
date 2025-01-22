@@ -74,6 +74,8 @@ namespace Jenny
         #region // [Func] Callback //
         void OnClickTouchBgButton()
         {
+            SoundManager.Instance.Play(E_Sound_Item.Sfx_Close_UI);
+
             CloseUI();
         }
         #endregion

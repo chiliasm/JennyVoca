@@ -59,7 +59,7 @@ namespace Jenny
         #region // [Func] Callback //
         void OnClickDeleteButton()
         {
-            CommonFunc.PlayClickSound();
+            SoundManager.Instance.Play(E_Sound_Item.Sfx_Click);
 
             mDeleteCallback?.Invoke(mInfo.Name);
         }

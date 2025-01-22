@@ -80,7 +80,7 @@ namespace Jenny
         #region // [Func] Callback //
         void OnClickBgButton()
         {
-            CommonFunc.PlayClickSound();
+            SoundManager.Instance.Play(E_Sound_Item.Sfx_Click_Item);
 
             mSelectCallback?.Invoke(ID);
         }

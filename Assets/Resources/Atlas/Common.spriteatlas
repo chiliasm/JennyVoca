@@ -85,6 +85,7 @@ SpriteAtlas:
     - 383e902aff5bb854d8885e608bcd1e90: 21300000
     - 3a99925a14dcf4b42b4ee34d4e9e5f74: 21300000
     - 8d4f5aaa70e77fe4ba1c958d535901ab: 21300000
+    - 679846ba35cbb4c41abcedbe86f6aaf2: 21300000
     - 008c22ea7c5b2094d9c0527a3337c12f: 21300000
     - 2293f9fa6abbd0d45b94587bb24116e4: 21300000
     - bba67b0b03dee9c41b92a7ac57d53f4e: 21300000
@@ -144,6 +145,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 383e902aff5bb854d8885e608bcd1e90, type: 3}
   - {fileID: 21300000, guid: 3a99925a14dcf4b42b4ee34d4e9e5f74, type: 3}
   - {fileID: 21300000, guid: 8d4f5aaa70e77fe4ba1c958d535901ab, type: 3}
+  - {fileID: 21300000, guid: 679846ba35cbb4c41abcedbe86f6aaf2, type: 3}
   - {fileID: 21300000, guid: 008c22ea7c5b2094d9c0527a3337c12f, type: 3}
   - {fileID: 21300000, guid: 2293f9fa6abbd0d45b94587bb24116e4, type: 3}
   - {fileID: 21300000, guid: bba67b0b03dee9c41b92a7ac57d53f4e, type: 3}
@@ -202,6 +204,7 @@ SpriteAtlas:
   - Icon_Start
   - Frame_Border_Orange
   - Button_Trapezoid_Yellow
+  - whitebg
   - Frame_Trapezoid_Orange
   - Frame_Circle_Red
   - Frame_Border_Red
