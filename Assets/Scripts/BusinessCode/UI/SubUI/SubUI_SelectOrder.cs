@@ -92,6 +92,7 @@ namespace Jenny
                     if (itemUI != null)
                     {
                         itemUI.transform.SetParent(_scrollList.content);
+                        itemUI.transform.localScale = Vector3.one;
                         itemUI.transform.SetAsFirstSibling();
                         itemUI.SetData(it, CallbackSelectItem);
                     }
