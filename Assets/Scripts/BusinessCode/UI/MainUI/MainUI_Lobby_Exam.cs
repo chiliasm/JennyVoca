@@ -315,7 +315,8 @@ namespace Jenny
                         if (mExamInfo.IsStart)
                         {
                             elapsedTime = Time.realtimeSinceStartup - mExamInfo.StartTime;
-                            ratio = Mathf.Clamp01(elapsedTime / LocalDataManager.Instance.GetTimeOfQuiz());
+                            //ratio = Mathf.Clamp01(elapsedTime / LocalDataManager.Instance.GetTimeOfQuiz());
+                            ratio = Mathf.Clamp01(elapsedTime / 20f);
                         }
                     }
                     break;

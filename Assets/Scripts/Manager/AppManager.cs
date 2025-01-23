@@ -8,9 +8,13 @@ namespace Jenny
     public class AppManager : BaseMonoSingleton<AppManager>
     {
         #region // [Var] Data //
+#if (UNITY_STANDALONE && !UNITY_EDITOR)
+        const int DEFAULT_APP_WIDTH = 480;
+        const int DEFAULT_APP_HEIGHT = 854;
+#else
         const int DEFAULT_APP_WIDTH = 720;
         const int DEFAULT_APP_HEIGHT = 1280;
-        const float DEFAULT_APP_RATE = 0.5625f;
+#endif
         #endregion
 
         #region // [Func] Singleton //
@@ -43,8 +47,10 @@ namespace Jenny
         {
             if (scaler != null)
             {
+                float fixRate = (float)DEFAULT_APP_WIDTH / (float)DEFAULT_APP_HEIGHT;
+
                 float rate = (float)Screen.width / Screen.height;
-                scaler.matchWidthOrHeight = (rate < DEFAULT_APP_RATE) ? 0 : 1;
+                scaler.matchWidthOrHeight = (rate < fixRate) ? 0 : 1;
             }
         }
         #endregion
