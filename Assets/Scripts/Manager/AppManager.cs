@@ -29,7 +29,12 @@ namespace Jenny
             Application.targetFrameRate = 60;
             QualitySettings.vSyncCount = 0;
             Screen.sleepTimeout = SleepTimeout.NeverSleep;
-            Screen.SetResolution(DEFAULT_APP_WIDTH, DEFAULT_APP_HEIGHT, true);
+
+            var isFullWindow = true;
+#if (UNITY_STANDALONE && !UNITY_EDITOR)
+            isFullWindow = false;
+#endif
+            Screen.SetResolution(DEFAULT_APP_WIDTH, DEFAULT_APP_HEIGHT, isFullWindow);
         }
         #endregion
 
