@@ -31,6 +31,7 @@ namespace Jenny
             Rt.anchorMin = Vector2.zero;
             Rt.anchorMax = Vector2.one;
             Rt.sizeDelta = Vector2.zero;
+            Rt.localScale = Vector3.one;
         }
 
         protected override void OnEnable()
