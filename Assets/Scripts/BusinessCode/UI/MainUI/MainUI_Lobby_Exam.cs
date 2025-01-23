@@ -132,7 +132,6 @@ namespace Jenny
         #endregion
 
         #region // [Var] Data //
-        const float MAX_TESTING_TIME = 20f;
         const float TEXT_CAUTION_RATIO = 0.8f;
 
         string mOrderName;
@@ -316,7 +315,7 @@ namespace Jenny
                         if (mExamInfo.IsStart)
                         {
                             elapsedTime = Time.realtimeSinceStartup - mExamInfo.StartTime;
-                            ratio = Mathf.Clamp01(elapsedTime / MAX_TESTING_TIME);
+                            ratio = Mathf.Clamp01(elapsedTime / LocalDataManager.Instance.GetTimeOfQuiz());
                         }
                     }
                     break;

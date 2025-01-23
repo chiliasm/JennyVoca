@@ -61,7 +61,7 @@ namespace Jenny
         }
         #endregion
 
-        #region // [Func] Set //
+        #region // [Func] SoundOn //
         public bool IsSoundOn()
         {
             return mLocalData.SoundOn;
@@ -77,7 +77,9 @@ namespace Jenny
 
             OnChangeLocalData_SoundOn?.Invoke();
         }
+        #endregion
 
+        #region // [Func] TimeOfQuiz //
         public int GetTimeOfQuiz()
         {
             return mLocalData.TimeOfQuiz;
