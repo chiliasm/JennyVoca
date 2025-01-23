@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Jenny
 {
@@ -20,6 +21,8 @@ namespace Jenny
         protected Camera _camera;
         [SerializeField]
         protected UIController _uiController;
+        [SerializeField]
+        protected CanvasScaler _scaler;
         #endregion
 
 
@@ -28,7 +31,7 @@ namespace Jenny
         {
             base.Start();
 
-            InitApp();
+            AppManager.Instance.CheckResolutionAdjust(_scaler);
 
             InitCamera();
 
@@ -36,15 +39,7 @@ namespace Jenny
         }
         #endregion
 
-        #region // [Func] Init //
-        void InitApp()
-        {
-            if (mSceneType == E_SCENE_TYPE.Intro)
-            {
-                Screen.SetResolution(720, 1280, true);
-                Screen.sleepTimeout = SleepTimeout.NeverSleep;
-            }
-        }
+        #region // [Func] Init //        
 
         void InitCamera()
         {

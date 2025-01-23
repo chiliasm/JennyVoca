@@ -28,8 +28,9 @@ namespace Jenny
         {
             base.Start();
 
-            //Rt.anchorMin = Vector2.zero;
-            //Rt.anchorMax = Vector2.one;
+            Rt.anchorMin = Vector2.zero;
+            Rt.anchorMax = Vector2.one;
+            Rt.sizeDelta = Vector2.zero;
         }
 
         protected override void OnEnable()

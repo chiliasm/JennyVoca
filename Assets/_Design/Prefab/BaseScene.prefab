@@ -50,6 +50,7 @@ MonoBehaviour:
   mSceneType: 0
   _camera: {fileID: 7938062578556303230}
   _uiController: {fileID: 1117863108632491661}
+  _scaler: {fileID: 826319520282988149}
 --- !u!1 &3201112200926606086
 GameObject:
   m_ObjectHideFlags: 0
@@ -413,7 +414,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 720, y: 1280}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96

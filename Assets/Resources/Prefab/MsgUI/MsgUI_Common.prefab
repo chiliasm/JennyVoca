@@ -226,8 +226,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\uC548\uB155\uD558\uC138\uC694\n\uC624\uB7AB\uB9CC\uC785\uB2C8\uB2E4."
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 36533cdbad406be49ae234be16ac904c, type: 2}
-  m_sharedMaterial: {fileID: 810013663886556418, guid: 36533cdbad406be49ae234be16ac904c, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2b475b6a94fc57c4c9e6d11a2b91300f, type: 2}
+  m_sharedMaterial: {fileID: -2537487144722278841, guid: 2b475b6a94fc57c4c9e6d11a2b91300f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -590,10 +590,10 @@ RectTransform:
   - {fileID: 7366301330351756891}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 720, y: 1280}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &3658451342469925438
 MonoBehaviour:
@@ -609,6 +609,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cg: {fileID: 3160150524787258543}
   _btnTouchBg: {fileID: 4000859802277001153}
+  _scrollItemObject: {fileID: 0}
   _btnClose: {fileID: 6938712467671452384}
   _btnCancel: {fileID: 8958814778487838795}
   _btnOK: {fileID: 1801801962470784382}
@@ -1016,9 +1017,17 @@ PrefabInstance:
       value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 3032095887014027378, guid: 97c7e871fa6a9b4438312b7ec48746c0, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 2b475b6a94fc57c4c9e6d11a2b91300f, type: 2}
+    - target: {fileID: 3032095887014027378, guid: 97c7e871fa6a9b4438312b7ec48746c0, type: 3}
       propertyPath: m_fontSizeBase
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 3032095887014027378, guid: 97c7e871fa6a9b4438312b7ec48746c0, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -2537487144722278841, guid: 2b475b6a94fc57c4c9e6d11a2b91300f, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
