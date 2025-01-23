@@ -34,7 +34,7 @@ namespace Jenny
         TMP_InputField _inputName;
 
         [SerializeField]
-        ScrollRect _scrollList;
+        ScrollRectEx _scrollEx;
         #endregion
 
         #region // [Var] Data //
@@ -105,15 +105,15 @@ namespace Jenny
 
         void UpdateUIScroll()
         {
-            RemoveAllScrollItem();
+            _scrollEx.RemoveAllItemUI();
 
             foreach (var it in mItemList)
             {
-                AddScrollItem(true, (ui) => {
+                _scrollEx.AddItemUI(true, (ui) => {
                     var itemUI = ui as ItemUIRegistOrderInfo;
                     if (itemUI != null)
                     {
-                        itemUI.transform.SetParent(_scrollList.content);
+                        itemUI.transform.SetParent(_scrollEx.content);
                         itemUI.transform.localScale = Vector3.one;
                         itemUI.transform.SetAsFirstSibling();
                         itemUI.SetData(it, CallbackDeleteItem);

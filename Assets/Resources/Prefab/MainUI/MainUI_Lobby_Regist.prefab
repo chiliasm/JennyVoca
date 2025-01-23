@@ -1065,7 +1065,7 @@ GameObject:
   - component: {fileID: 2873601687412152669}
   - component: {fileID: 5812363184907428737}
   - component: {fileID: 5950773226196533062}
-  - component: {fileID: 7179041862459512919}
+  - component: {fileID: 3728337067173480443}
   m_Layer: 5
   m_Name: Scroll View
   m_TagString: Untagged
@@ -1131,7 +1131,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &7179041862459512919
+--- !u!114 &3728337067173480443
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1140,11 +1140,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 5146902222510810082}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1aa08ab6e0800fa44ae55d278d1423e3, type: 3}
+  m_Script: {fileID: 11500000, guid: e1d12bfea67484b44a03bfb79b467c68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Content: {fileID: 289140299973060954}
-  m_Horizontal: 0
+  m_Horizontal: 1
   m_Vertical: 1
   m_MovementType: 1
   m_Elasticity: 0.1
@@ -1154,13 +1154,14 @@ MonoBehaviour:
   m_Viewport: {fileID: 53897803656742884}
   m_HorizontalScrollbar: {fileID: 0}
   m_VerticalScrollbar: {fileID: 0}
-  m_HorizontalScrollbarVisibility: 2
-  m_VerticalScrollbarVisibility: 2
-  m_HorizontalScrollbarSpacing: -3
-  m_VerticalScrollbarSpacing: -3
+  m_HorizontalScrollbarVisibility: 0
+  m_VerticalScrollbarVisibility: 0
+  m_HorizontalScrollbarSpacing: 0
+  m_VerticalScrollbarSpacing: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+  _itemObject: {fileID: 4440901510822760120, guid: 692e822e2299e454e98a0591b3723839, type: 3}
 --- !u!1 &5815897300372298353
 GameObject:
   m_ObjectHideFlags: 0
@@ -2539,7 +2540,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -0.00003807603, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &3567456199925551888
@@ -2633,16 +2634,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cg: {fileID: 3160150524787258543}
   _btnTouchBg: {fileID: 4000859802277001153}
-  _scrollItemObject: {fileID: 4440901510822760120, guid: 692e822e2299e454e98a0591b3723839, type: 3}
   _textTitle: {fileID: 4965241937752104342}
   _btnClose: {fileID: 7110472690699755838}
   _inputEn: {fileID: 7301303336115955680}
   _inputKr: {fileID: 3501669875523693046}
   _btnAdd: {fileID: 5955207559778072129}
   _btnModify: {fileID: 5821558366527350958}
-  _scrollList: {fileID: 7179041862459512919}
-  _itemObject: {fileID: 0}
-  _trItemPool: {fileID: 0}
+  _scrollEx: {fileID: 3728337067173480443}
   _btnRegist: {fileID: 1875513398546304971}
 --- !u!1 &9186080996066806545
 GameObject:

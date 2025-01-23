@@ -1712,7 +1712,7 @@ GameObject:
   - component: {fileID: 2873601687412152669}
   - component: {fileID: 5812363184907428737}
   - component: {fileID: 5950773226196533062}
-  - component: {fileID: 7179041862459512919}
+  - component: {fileID: 7068382413030096258}
   m_Layer: 5
   m_Name: Scroll View
   m_TagString: Untagged
@@ -1778,7 +1778,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &7179041862459512919
+--- !u!114 &7068382413030096258
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1787,11 +1787,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 5146902222510810082}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1aa08ab6e0800fa44ae55d278d1423e3, type: 3}
+  m_Script: {fileID: 11500000, guid: e1d12bfea67484b44a03bfb79b467c68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Content: {fileID: 289140299973060954}
-  m_Horizontal: 0
+  m_Horizontal: 1
   m_Vertical: 1
   m_MovementType: 1
   m_Elasticity: 0.1
@@ -1801,13 +1801,14 @@ MonoBehaviour:
   m_Viewport: {fileID: 53897803656742884}
   m_HorizontalScrollbar: {fileID: 0}
   m_VerticalScrollbar: {fileID: 0}
-  m_HorizontalScrollbarVisibility: 2
-  m_VerticalScrollbarVisibility: 2
-  m_HorizontalScrollbarSpacing: -3
-  m_VerticalScrollbarSpacing: -3
+  m_HorizontalScrollbarVisibility: 0
+  m_VerticalScrollbarVisibility: 0
+  m_HorizontalScrollbarSpacing: 0
+  m_VerticalScrollbarSpacing: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+  _itemObject: {fileID: 4440901510822760120, guid: 51929bc4380103e42ab0512b8d732fad, type: 3}
 --- !u!1 &5538731864616195093
 GameObject:
   m_ObjectHideFlags: 0
@@ -2691,7 +2692,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.0007324219}
+  m_AnchoredPosition: {x: -0.000028210408, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &3567456199925551888
@@ -2821,13 +2822,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cg: {fileID: 3160150524787258543}
   _btnTouchBg: {fileID: 4000859802277001153}
-  _scrollItemObject: {fileID: 4440901510822760120, guid: 51929bc4380103e42ab0512b8d732fad, type: 3}
   _btnClose: {fileID: 7110472690699755838}
   _textOrder: {fileID: 4965241937752104342}
   _textKr: {fileID: 4064567824236997435}
   _inputEn: {fileID: 7988495969475766257}
   _btnSubmit: {fileID: 4685610636037632182}
-  _scrollList: {fileID: 7179041862459512919}
+  _scrollEx: {fileID: 7068382413030096258}
   _btnStart: {fileID: 1002580395522613563}
   _btnMarking: {fileID: 1875513398546304971}
   _btnRetry: {fileID: 5841419498657017260}

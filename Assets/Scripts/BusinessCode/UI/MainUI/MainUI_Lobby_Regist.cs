@@ -37,11 +37,7 @@ namespace Jenny
         Button _btnModify;
 
         [SerializeField]
-        ScrollRect _scrollList;
-        [SerializeField]
-        GameObject _itemObject;
-        [SerializeField]
-        Transform _trItemPool;
+        ScrollRectEx _scrollEx;
 
         [SerializeField]
         Button _btnRegist;
@@ -90,7 +86,7 @@ namespace Jenny
             _inputEn.text = string.Empty;
             _inputKr.text = string.Empty;
 
-            var itemList = GetScrollItemList();
+            var itemList = _scrollEx.GetItemUIList();
             foreach (var it in itemList)
             {
                 var itemUI = it as ItemUIRegistInfo;
@@ -140,7 +136,7 @@ namespace Jenny
 
         void UpdateUIItemList()
         {
-            RemoveAllScrollItem();
+            _scrollEx.RemoveAllItemUI();
 
             if (ClearCoroutine(ref mCorUpdateUIItemList))
                 mCorUpdateUIItemList = StartCoroutine(CorUpdateUIItemList());
@@ -150,12 +146,12 @@ namespace Jenny
         {
             foreach (var it in mItemList)
             {
-                AddScrollItem(false, (ui) =>
+                _scrollEx.AddItemUI(false, (ui) =>
                 {
                     var itemUI = ui as ItemUIRegistInfo;
                     if (itemUI != null)
                     {
-                        itemUI.transform.SetParent(_scrollList.content);
+                        itemUI.transform.SetParent(_scrollEx.content);
                         itemUI.transform.localScale = Vector3.one;
                         itemUI.transform.SetAsLastSibling();
                         itemUI.SetData(it, OnSelectedCallback, OnModifyCallback, OnDeleteCallback);
@@ -220,11 +216,11 @@ namespace Jenny
 
             RegistScrollItemData data = new(en, kr);
             mItemList.Add(data);
-            AddScrollItem(false, (ui) => {
+            _scrollEx.AddItemUI(false, (ui) => {
                 var itemUI = ui as ItemUIRegistInfo;
                 if (itemUI != null)
                 {
-                    itemUI.transform.SetParent(_scrollList.content);
+                    itemUI.transform.SetParent(_scrollEx.content);
                     itemUI.transform.localScale = Vector3.one;
                     itemUI.transform.SetAsLastSibling();
                     itemUI.SetData(data, OnSelectedCallback, OnModifyCallback, OnDeleteCallback);
@@ -247,7 +243,7 @@ namespace Jenny
                 info.En = _inputEn.text;
                 info.Kr = _inputKr.text;
 
-                var itemUI = GetScrollItemUI(mModifyID) as ItemUIRegistInfo;
+                var itemUI = _scrollEx.GetItemUI(mModifyID) as ItemUIRegistInfo;
                 if (itemUI != null)
                     itemUI.SetData(info);
 
@@ -257,7 +253,7 @@ namespace Jenny
 
         void OnSelectedCallback(int id = -1)
         {
-            var list = GetScrollItemList();
+            var list = _scrollEx.GetItemUIList();
             if (list != null && list.Count > id)
             {
                 foreach (var it in list)
@@ -291,7 +287,7 @@ namespace Jenny
                 return;
 
             mItemList.RemoveAt(id);
-            RemoveScrollItem(id);
+            _scrollEx.RemoveItemUI(id);
 
             InitUI();
         }

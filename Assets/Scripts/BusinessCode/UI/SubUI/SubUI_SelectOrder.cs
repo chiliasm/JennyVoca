@@ -27,7 +27,7 @@ namespace Jenny
         Button _btnSelect;
 
         [SerializeField]
-        ScrollRect _scrollList;
+        ScrollRectEx _scrollEx;
         #endregion
 
         #region // [Var] Data //
@@ -83,15 +83,15 @@ namespace Jenny
 
         void UpdateUIScroll()
         {
-            RemoveAllScrollItem();
+            _scrollEx.RemoveAllItemUI();
 
             foreach (var it in mDataList)
             {
-                AddScrollItem(true, (ui) => {
+                _scrollEx.AddItemUI(true, (ui) => {
                     var itemUI = ui as ItemUISelectOrderInfo;
                     if (itemUI != null)
                     {
-                        itemUI.transform.SetParent(_scrollList.content);
+                        itemUI.transform.SetParent(_scrollEx.content);
                         itemUI.transform.localScale = Vector3.one;
                         itemUI.transform.SetAsFirstSibling();
                         itemUI.SetData(it, CallbackSelectItem);
@@ -127,7 +127,7 @@ namespace Jenny
         {
             mSelectID = id;
 
-            var list = GetScrollItemList();
+            var list = _scrollEx.GetItemUIList();
             if (list != null && list.Count > id)
             {
                 foreach (var it in list)

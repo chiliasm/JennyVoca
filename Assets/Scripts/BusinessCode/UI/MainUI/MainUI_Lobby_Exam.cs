@@ -108,7 +108,7 @@ namespace Jenny
         Button _btnSubmit;
 
         [SerializeField]
-        ScrollRect _scrollList;
+        ScrollRectEx _scrollEx;
 
         [SerializeField]
         Button _btnStart;
@@ -299,7 +299,7 @@ namespace Jenny
         void UpdateUIScroll()
         {
             mItemList.Clear();
-            RemoveAllScrollItem();
+            _scrollEx.RemoveAllItemUI();
         }
 
         void UpdateUITimer()
@@ -340,7 +340,7 @@ namespace Jenny
         IEnumerator CorRunMarking(System.Action lpCompleteCallback = null)
         {
             int passCount = 0;
-            var list = GetScrollItemList();
+            var list = _scrollEx.GetItemUIList();
             foreach (var it in list)
             {
                 var itemUI = it as ItemUIExamInfo;
@@ -385,11 +385,11 @@ namespace Jenny
 
                 ExamScrollItemData data = new(info.En, info.Kr, _inputEn.text);
                 mItemList.Add(data);
-                AddScrollItem(false, (ui) => {
+                _scrollEx.AddItemUI(false, (ui) => {
                     var itemUI = ui as ItemUIExamInfo;
                     if (itemUI != null)
                     {
-                        itemUI.transform.SetParent(_scrollList.content);
+                        itemUI.transform.SetParent(_scrollEx.content);
                         itemUI.transform.localScale = Vector3.one;
                         itemUI.transform.SetAsLastSibling();
                         itemUI.SetData(data);

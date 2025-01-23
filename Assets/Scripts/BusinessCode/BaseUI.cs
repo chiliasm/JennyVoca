@@ -13,13 +13,6 @@ namespace Jenny
         CanvasGroup _cg;
         [SerializeField]
         protected Button _btnTouchBg;
-        [SerializeField]
-        GameObject _scrollItemObject;
-        #endregion
-
-        #region // [Var] Scroll Data //
-        readonly List<ItemUI> mScrollItemList = new();
-        readonly Queue<ItemUI> mScrollItemPool = new();
         #endregion
 
 
@@ -42,8 +35,6 @@ namespace Jenny
         protected override void OnDisable()
         {
             base.OnDisable();
-
-            RemoveAllScrollItem();
         }
         #endregion
 
@@ -64,89 +55,6 @@ namespace Jenny
 
         virtual public void CloseUI()
         {
-        }
-        #endregion
-
-        #region // [Func] Scroll //
-        protected ItemUI GetOrNewItem()
-        {
-            if (_scrollItemObject == null)
-                return null;
-
-            ItemUI info = null;
-            if (mScrollItemPool.Count > 0)
-                info = mScrollItemPool.Dequeue();
-            else
-            {
-                var o = GameObject.Instantiate(_scrollItemObject);
-                o.SetActive(false);
-                if (o.TryGetComponent<ItemUI>(out var comp))
-                    info = comp;
-            }
-            return info;
-        }
-
-        protected List<ItemUI> GetScrollItemList()
-        {
-            return mScrollItemList;
-        }
-
-        protected ItemUI GetScrollItemUI(int index)
-        {
-            if (mScrollItemList.Count <= index)
-                return null;
-            return mScrollItemList[index];
-        }
-
-        void UpdateScrollItemID()
-        {
-            for (int i = 0; i < mScrollItemList.Count; i++)
-                mScrollItemList[i].ID = i;
-        }
-
-        protected void AddScrollItem(bool isImmediate = false, System.Action<ItemUI> lpSetDataCallback = null)
-        {
-            var itemUI = GetOrNewItem();
-            if (itemUI != null)
-            {
-                lpSetDataCallback?.Invoke(itemUI);
-                itemUI.Show(true, isImmediate, () => {
-                });
-                mScrollItemList.Add(itemUI);
-
-                UpdateScrollItemID();
-            }
-        }
-
-        protected void RemoveScrollItem(int id, bool isImmediate = false)
-        {
-            if (mScrollItemList.Count > id)
-            {
-                var itemInfo = mScrollItemList[id];
-                itemInfo.Show(false, isImmediate, () => {
-                });
-
-                if (mScrollItemList.Remove(itemInfo))
-                {
-                    mScrollItemPool.Enqueue(itemInfo);
-
-                    UpdateScrollItemID();
-                }
-            }
-        }
-
-        protected void RemoveAllScrollItem(bool isImmediate = true)
-        {
-            foreach (var itemInfo in mScrollItemList)
-            {
-                if (itemInfo != null)
-                {
-                    itemInfo.Show(false, isImmediate, () => {
-                    });
-                    mScrollItemPool.Enqueue(itemInfo);
-                }
-            }
-            mScrollItemList.Clear();
         }
         #endregion
     }
